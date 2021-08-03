@@ -1,4 +1,4 @@
-package com.example.projectapp.Classes;
+package com.groupone.projectapp.Classes;
 
 import java.util.ArrayList;
 import java.util.List;

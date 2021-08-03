@@ -1,4 +1,4 @@
-package com.example.projectapp;
+package com.groupone.projectapp;
 
 import org.junit.Test;
 
