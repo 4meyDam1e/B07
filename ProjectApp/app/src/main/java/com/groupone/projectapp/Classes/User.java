@@ -1,4 +1,4 @@
-package com.example.projectapp.Classes;
+package com.groupone.projectapp.Classes;
 
 public class User {
     private String username;
