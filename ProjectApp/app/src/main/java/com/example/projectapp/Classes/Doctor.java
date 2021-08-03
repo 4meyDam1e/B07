@@ -7,13 +7,15 @@ public class Doctor extends User{
     private List<String> proficiencies;
     private List<String> previousPatients;
     private List<String> upcomingAppointments;
+    private List<String> availableTimeslots;
 
 
-    Doctor(String username, String email, String name, List<String> proficiencies, List<String> previousPatients, List<String> upcomingAppointments) {
+    Doctor(String username, String email, String name, List<String> proficiencies, List<String> previousPatients, List<String> upcomingAppointment, List<String> availableTimeslots) {
         super(username, email, name);
         this.proficiencies = new ArrayList<String>();
         this.previousPatients = new ArrayList<String>();
         this.upcomingAppointments = new ArrayList<String>();
+        this.availableTimeslots = new ArrayList<String>();
     }
 
     public List<String> getPreviousPatients() {

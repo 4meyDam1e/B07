@@ -29,4 +29,5 @@ public class Patient extends User{
     public void setUpcomingAppointments(List<String> upcomingAppointments) {
         this.upcomingAppointments = upcomingAppointments;
     }
+
 }
