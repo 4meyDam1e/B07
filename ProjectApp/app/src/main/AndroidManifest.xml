@@ -11,6 +11,7 @@
         android:theme="@style/Theme.ProjectApp">
         <activity
             android:name=".RegisterActivity"
+            android:label="Create an account"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
