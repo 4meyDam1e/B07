@@ -5,20 +5,20 @@ import java.util.List;
 
 public class Doctor extends User{
     private List<String> proficiencies;
-    private List<String> previousPatients;
-    private List<String> upcomingAppointments;
-    private List<String> availableTimeslots;
+    private List<Patient> previousPatients;
+    private List<Appointment> upcomingAppointments;
+    private List<Integer> availableTimeslots;
 
 
-    Doctor(String username, String email, String name, List<String> proficiencies, List<String> previousPatients, List<String> upcomingAppointment, List<String> availableTimeslots) {
+    Doctor(String username, String email, String name, List<String> proficiencies, List<String> previousPatients, List<Integer> availableTimeslots) {
         super(username, email, name);
         this.proficiencies = new ArrayList<String>();
-        this.previousPatients = new ArrayList<String>();
-        this.upcomingAppointments = new ArrayList<String>();
-        this.availableTimeslots = new ArrayList<String>();
+        this.previousPatients = new ArrayList<Patient>();
+        this.upcomingAppointments = new ArrayList<Appointment>();
+        this.availableTimeslots = new ArrayList<Integer>();
     }
 
-    public List<String> getPreviousPatients() {
+    public List<Patient> getPreviousPatients() {
         return previousPatients;
     }
 
@@ -26,11 +26,11 @@ public class Doctor extends User{
         return proficiencies;
     }
 
-    public List<String> getUpcomingAppointments() {
+    public List<Appointment> getUpcomingAppointments() {
         return upcomingAppointments;
     }
 
-    public void setPreviousPatients(List<String> previousPatients) {
+    public void setPreviousPatients(List<Patient> previousPatients) {
         this.previousPatients = previousPatients;
     }
 
@@ -38,7 +38,29 @@ public class Doctor extends User{
         this.proficiencies = proficiencies;
     }
 
-    public void setUpcomingAppointments(List<String> upcomingAppointments) {
+    public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
         this.upcomingAppointments = upcomingAppointments;
     }
+
+    public void createAppointment(Patient patient, int timeslot) throws IllegalArgumentException{
+        if(!availableTimeslots.contains(timeslot)){
+            throw new IllegalArgumentException("timeslot not available");
+        }
+
+        Appointment appointment = new Appointment(timeslot, this, patient);
+        this.upcomingAppointments.add(appointment);
+        this.availableTimeslots.remove(timeslot);
+    }
+
+
+    public void removeAppointment(Appointment appointment){
+        if (appointment.getCompleted()){
+            this.previousPatients.add(appointment.getPatient());
+        }
+
+        int timeslot = appointment.getTimeslotStartTime();
+        this.upcomingAppointments.remove(appointment);
+        this.availableTimeslots.add(timeslot);
+    }
+
 }
