@@ -1,17 +1,20 @@
 package com.groupone.projectapp.Classes;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Doctor extends User{
+public class Doctor extends User {
     private List<String> proficiencies;
     private List<Patient> previousPatients;
     private List<Appointment> upcomingAppointments;
     private List<Integer> availableTimeslots;
 
 
-    public Doctor(String username, String email, String name, String gender, String password) {
-        super(username, email, name, gender, password);
+    public Doctor(String email, String firstName, String lastName, String gender, String password) {
+        super(email, firstName, lastName, gender, password);
         this.proficiencies = new ArrayList<String>();
         this.previousPatients = new ArrayList<Patient>();
         this.upcomingAppointments = new ArrayList<Appointment>();
@@ -63,4 +66,10 @@ public class Doctor extends User{
         this.availableTimeslots.add(timeslot);
     }
 
+    @Override
+    public void writeDB()
+    {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        ref.child("Users").child("Doctors").child(getID()).setValue(this);
+    }
 }

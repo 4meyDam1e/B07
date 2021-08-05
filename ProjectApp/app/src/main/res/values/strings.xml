@@ -12,4 +12,18 @@
     <string name="welcome_message">Welcome,</string>
     <string name="upcoming_appointments_message">Upcoming Appointments</string>
     <string name="view_all">View All Appointments</string>
+    <!--  Register Page  -->
+    <string name="r_text_email">Email</string>
+    <string name="r_email_hint">example@abc.com</string>
+    <string name="r_text_first_name">First Name</string>
+    <string name="r_text_last_name">Last Name</string>
+    <string name="r_text_gender">Gender</string>
+    <string name="r_text_password">Password</string>
+    <string name="r_text_confirm_password">Confirm Password</string>
+    <string name="r_text_identity">Register as</string>
+    <string name="r_button_sign_up">Sign Up</string>
+    <string name="r_radio_male">Male</string>
+    <string name="r_radio_female">Female</string>
+    <string name="r_radio_patient">Patient</string>
+    <string name="r_radio_doctor">Doctor</string>
 </resources>

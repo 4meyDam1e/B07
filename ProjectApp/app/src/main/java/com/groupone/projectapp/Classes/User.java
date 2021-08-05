@@ -1,22 +1,29 @@
 package com.groupone.projectapp.Classes;
 
-public abstract class User {
-    private String username;
-    private String email;
-    private String name;
+public abstract class User implements DatabaseIO {
+    private String email; // use email as user name
+    private String firstName;
+    private String lastName;
     private String gender;
     private String password;
 
-    public User(String username, String email, String name, String gender, String password){
-        this.username = username;
+    public User() {
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+    }
+
+    public User(String email, String firstName, String lastName, String gender, String password){
         this.email = email;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getID() {
+        String res = "";
+        for (int i = 0; i < email.length(); i += 1)
+            res = res + Integer.toHexString((int) email.charAt(i));
+        return res;
     }
 
     public String getEmail() {
@@ -24,7 +31,15 @@ public abstract class User {
     }
 
     public String getName() {
-        return name;
+        return firstName + " " + lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getGender() {
@@ -39,12 +54,12 @@ public abstract class User {
         this.gender = gender;
     }
 
-    public void setNames(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setUsernames(String username) {
-        this.username = username;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {
@@ -54,6 +69,4 @@ public abstract class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 }
