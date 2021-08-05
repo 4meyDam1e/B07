@@ -12,4 +12,7 @@
     <string name="welcome_message">Welcome,</string>
     <string name="upcoming_appointments_message">Upcoming Appointments</string>
     <string name="view_all">View All Appointments</string>
+    <string name="book_appointment">Book Appointment</string>
+    <string name="profile">Profile</string>
+    <string name="past_patients">Patients</string>
 </resources>
