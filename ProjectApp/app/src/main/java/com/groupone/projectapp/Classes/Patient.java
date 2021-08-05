@@ -1,23 +1,31 @@
 package com.groupone.projectapp.Classes;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Patient extends User{
+public class Patient extends User {
     private String healthCardNumber;
     private List<Appointment> upcomingAppointments;
     private List<Doctor> previousDoctors;
 
-    public Patient(String username, String email, String name, String gender, String password)
+    public Patient()
     {
-        super(username, email, name, gender, password);
+        // Default constructor required for calls to DataSnapshot.getValue(Patient.class)
+    }
+
+    public Patient(String email, String firstName, String lastName, String gender, String password)
+    {
+        super(email, firstName, lastName, gender, password);
         this.healthCardNumber = "";
         this.upcomingAppointments = new ArrayList<>();
         this.previousDoctors = new ArrayList<>();
     }
 
-    public Patient(String username, String email, String name, String gender, String password, String healthCardNumber) {
-        super(username, email, name, gender, password);
+    public Patient(String email, String firstName, String lastName, String gender, String password, String healthCardNumber) {
+        super(email, firstName, lastName, gender, password);
         this.healthCardNumber = healthCardNumber;
         this.upcomingAppointments = new ArrayList<>();
         this.previousDoctors = new ArrayList<>();
@@ -62,5 +70,12 @@ public class Patient extends User{
         Doctor doctor = appointment.getDoctor();
         doctor.removeAppointment(appointment);
 
+    }
+
+    @Override
+    public void writeDB()
+    {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        ref.child("Users").child("Patients").child(getID()).setValue(this);
     }
 }

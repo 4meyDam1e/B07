@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Register as"
+        android:text="@string/r_text_identity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_editTextTextConfirmPassword" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Gender"
+        android:text="@string/r_text_gender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_editTextTextLastName" />
 
@@ -32,12 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Confirm Password"
+        android:text="@string/r_text_confirm_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_editTextTextPassword" />
 
     <EditText
         android:id="@+id/r_editTextTextConfirmPassword"
+        android:autofillHints="password"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -48,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_confirmPasswordTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/r_passwordTextView"
@@ -56,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
-        android:text="Password"
+        android:text="@string/r_text_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_radioGroupGender" />
 
@@ -66,12 +67,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Last Name"
+        android:text="@string/r_text_last_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_editTextTextFirstName" />
 
     <EditText
         android:id="@+id/r_editTextTextLastName"
+        android:autofillHints="name"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -82,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_lastNameTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/r_firstNameTextView"
@@ -90,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="First Name"
+        android:text="@string/r_text_first_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_editTextTextEmailAddress" />
 
@@ -100,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Email"
+        android:text="@string/r_text_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -110,15 +112,18 @@
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:autofillHints="emailAddress"
         android:ems="10"
-        android:hint="example@abc.com"
+        android:hint="@string/r_email_hint"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r_emailTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/r_emailTextView"
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/r_editTextTextFirstName"
+        android:autofillHints="name"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -132,6 +137,7 @@
 
     <EditText
         android:id="@+id/r_editTextTextPassword"
+        android:autofillHints="password"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -150,10 +156,12 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
-        android:text="Sign Up"
+        android:onClick="submitRequest"
+        android:text="@string/r_button_sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r_radioGroupIdentity" />
+        app:layout_constraintTop_toBottomOf="@+id/r_radioGroupIdentity"
+        tools:ignore="UsingOnClickInXml" />
 
     <RadioGroup
         android:id="@+id/r_radioGroupGender"
@@ -169,13 +177,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Male" />
+            android:text="@string/r_radio_male" />
 
         <RadioButton
             android:id="@+id/r_radioButtonFemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="@string/r_radio_female" />
     </RadioGroup>
 
     <RadioGroup
@@ -192,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="Patient"
+            android:text="@string/r_radio_patient"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="558dp" />
 
@@ -200,7 +208,7 @@
             android:id="@+id/r_radioButtonDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Doctor"
+            android:text="@string/r_radio_doctor"
             tools:layout_editor_absoluteX="135dp"
             tools:layout_editor_absoluteY="558dp" />
     </RadioGroup>
