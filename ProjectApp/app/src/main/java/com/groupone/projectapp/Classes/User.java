@@ -1,15 +1,18 @@
 package com.groupone.projectapp.Classes;
 
-public class User {
+public abstract class User {
     private String username;
     private String email;
     private String name;
     private String gender;
+    private String password;
 
-    User(String username, String email, String name){
+    public User(String username, String email, String name, String gender, String password){
         this.username = username;
         this.email = email;
         this.name = name;
+        this.gender = gender;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -20,7 +23,7 @@ public class User {
         return email;
     }
 
-    public String getNames() {
+    public String getName() {
         return name;
     }
 
@@ -43,4 +46,14 @@ public class User {
     public void setUsernames(String username) {
         this.username = username;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 }
