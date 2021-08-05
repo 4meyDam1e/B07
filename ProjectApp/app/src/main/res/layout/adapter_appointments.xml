@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:weightSum="100">
+        android:weightSum="100"
+        tools:layout_editor_absoluteX="109dp"
+        tools:layout_editor_absoluteY="-117dp">
 
         <TextView
             android:id="@+id/textView1"

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class AppointmentsActivity extends AppCompatActivity {
 
-    private static final String TAG = "DashboardActivity";
+    private static final String TAG = "AppointmentsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
