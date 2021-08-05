@@ -4,20 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Patient extends User{
-    private int healthcardNumber;
+    private String healthCardNumber;
     private List<Appointment> upcomingAppointments;
     private List<Doctor> previousDoctors;
 
-    public Patient(String username, String email, String name, String gender, String password, int healthcardNumber) {
+    public Patient(String username, String email, String name, String gender, String password)
+    {
         super(username, email, name, gender, password);
-        this.healthcardNumber = healthcardNumber;
-        this.upcomingAppointments = new ArrayList<Appointment>();
-        this.previousDoctors = new ArrayList<Doctor>();
-
+        this.healthCardNumber = "";
+        this.upcomingAppointments = new ArrayList<>();
+        this.previousDoctors = new ArrayList<>();
     }
 
-    public int getHealthcardNumber() {
-        return healthcardNumber;
+    public Patient(String username, String email, String name, String gender, String password, String healthCardNumber) {
+        super(username, email, name, gender, password);
+        this.healthCardNumber = healthCardNumber;
+        this.upcomingAppointments = new ArrayList<>();
+        this.previousDoctors = new ArrayList<>();
+    }
+
+    public String getHealthCardNumber() {
+        return healthCardNumber;
     }
 
     public List<Appointment> getUpcomingAppointments() {
@@ -28,8 +35,8 @@ public class Patient extends User{
         return previousDoctors;
     }
 
-    public void setHealthcardNumber(int healthcardNumber) {
-        this.healthcardNumber = healthcardNumber;
+    public void setHealthCardNumber(String healthCardNumber) {
+        this.healthCardNumber = healthCardNumber;
     }
 
     public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
@@ -56,5 +63,4 @@ public class Patient extends User{
         doctor.removeAppointment(appointment);
 
     }
-
 }
