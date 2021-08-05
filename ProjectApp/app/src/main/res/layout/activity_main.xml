@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/r_editTextTextConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/r_buttonSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -55,7 +55,7 @@
         android:text="@string/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/r_editTextTextConfirmPassword" />
 
     <Button
         android:id="@+id/button4"
@@ -68,7 +68,7 @@
         android:text="@string/signup_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/r_buttonSignUp" />
 
     <Button
         android:id="@+id/testAppointment"
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/r_buttonSignUp" />
 
     <ImageView
         android:id="@+id/imageView"
