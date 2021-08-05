@@ -22,4 +22,9 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
 
     }
+
+    public void testAppointments(View view) {
+        Intent intent = new Intent(this, AppointmentsActivity.class);
+        startActivity(intent);
+    }
 }

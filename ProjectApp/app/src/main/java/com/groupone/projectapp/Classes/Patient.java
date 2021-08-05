@@ -8,7 +8,7 @@ public class Patient extends User{
     private List<Appointment> upcomingAppointments;
     private List<Doctor> previousDoctors;
 
-    Patient(String username, String email, String name, int healthcardNumber, List<String> upcomingAppointments) {
+    public Patient(String username, String email, String name, int healthcardNumber, List<String> upcomingAppointments) {
         super(username, email, name);
         this.healthcardNumber = healthcardNumber;
         this.upcomingAppointments = new ArrayList<Appointment>();

@@ -20,7 +20,7 @@ public class User {
         return email;
     }
 
-    public String getNames() {
+    public String getName() {
         return name;
     }
 

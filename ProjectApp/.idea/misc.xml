@@ -4,14 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/B07/ProjectApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/activity_dashboard.xml" value="0.6666666666666666" />
+        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/activity_appointments.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/activity_dashboard.xml" value="0.3757292882147025" />
+        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/activity_register.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/adapter_appointments.xml" value="0.2742382271468144" />
+        <entry key="..\:/Users/Amey/Documents/UNI_SECOND_YEAR/Summer2021/CSCB07/Project Backup/B07/ProjectApp/app/src/main/res/layout/adapter_dashboard.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/trini/AndroidStudioProjects/ProjectApp/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/Work/CSCB07/B07/ProjectApp/app/src/main/res/layout/activity_main.xml" value="0.5020491803278688" />
         <entry key="..\:/Work/CSCB07/B07/ProjectApp/app/src/main/res/layout/activity_register.xml" value="0.4" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="16" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="16" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -6,7 +6,7 @@ public class Appointment {
     private Patient patient;
     private boolean completed;
 
-    Appointment(int timeslotStartTime, Doctor doctor, Patient patient){
+    public Appointment(int timeslotStartTime, Doctor doctor, Patient patient){
         this.timeslotStartTime = timeslotStartTime;
         this.doctor = doctor;
         this.patient = patient;
