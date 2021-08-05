@@ -10,7 +10,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="welcome_message">Welcome,</string>
-    <string name="upcoming_appointments_message">Upcoming Appointments</string>
+    <string name="upcoming_appointments_message">Upcoming Appointment</string>
     <string name="view_all">View All Appointments</string>
 <<<<<<< HEAD
     <string name="book_appointment">Book Appointment</string>
