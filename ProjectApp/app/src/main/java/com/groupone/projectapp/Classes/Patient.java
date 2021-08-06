@@ -76,6 +76,6 @@ public class Patient extends User {
     public void writeDB()
     {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref.child("Users").child("Patients").child(getID()).setValue(this);
+        ref.child("Users").child("Patients").child(getID(getEmail())).setValue(this);
     }
 }

@@ -1,7 +1,12 @@
 package com.groupone.projectapp.Classes;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +16,11 @@ public class Doctor extends User {
     private List<Patient> previousPatients;
     private List<Appointment> upcomingAppointments;
     private List<Integer> availableTimeslots;
+
+    public Doctor()
+    {
+        // Default constructor required for calls to DataSnapshot.getValue(Patient.class)
+    }
 
 
     public Doctor(String email, String firstName, String lastName, String gender, String password) {
@@ -70,6 +80,6 @@ public class Doctor extends User {
     public void writeDB()
     {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref.child("Users").child("Doctors").child(getID()).setValue(this);
+        ref.child("Users").child("Doctors").child(User.getID(getEmail())).setValue(this);
     }
 }
