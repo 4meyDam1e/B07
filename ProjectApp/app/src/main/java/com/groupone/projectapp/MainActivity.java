@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String email;
     private String password;
-    private boolean resultDoctor;
-    private boolean resultPatient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,21 +49,6 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
         getInput();
         verifyUserAndPassword();
-//        Log.i("info", email);
-//        Log.i("info", password);
-//        Log.i("info", "here");
-        if(resultPatient) {
-            Log.i("info", "Patient");
-            Intent intent = new Intent(this, DashboardActivity.class);
-            startActivity(intent);
-        } else if(resultDoctor) {
-            Log.i("info", "Doctor");
-            Intent intent = new Intent(this, DashboardActivity.class);
-            startActivity(intent);
-        } else {
-            Log.i("info", "Error");
-            Toast.makeText(this,"Incorrect email or password!", Toast.LENGTH_LONG).show();
-        }
     }
 
     private void verifyUserAndPassword() {
@@ -81,12 +64,14 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(patient.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            resultPatient = true;
+                            //resultPatient = true;
+                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                            startActivity(intent);
                             return;
                         }
                     }
                 }
-                resultPatient = false;
+                //Toast.makeText(MainActivity.this,"Incorrect email or password!", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -94,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.w("warning", "loadPost:onCancelled", databaseError.toException());
             }
         });
-        if(resultPatient) return;
+        Log.i("info", "---------");
         refDoc.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,12 +89,13 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(doctor.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            resultDoctor = true;
+                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                            startActivity(intent);
                             return;
                         }
                     }
                 }
-                resultDoctor = false;
+                Toast.makeText(MainActivity.this,"Incorrect email or password!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
