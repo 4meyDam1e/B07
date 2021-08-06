@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.groupone.projectapp.Classes.Appointment;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.User;
 
@@ -43,6 +44,7 @@ public class DashboardDoctorActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView4);
         textView.setText("Welcome, " + currentUser.getFirstName());
 
+        Appointment latestApp = currentUser.getLatestAppointment();
 
 
         super.onCreate(savedInstanceState);

@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Doctor extends User {
@@ -74,6 +75,24 @@ public class Doctor extends User {
         int timeslot = appointment.getTimeslotStartTime();
         this.upcomingAppointments.remove(appointment);
         this.availableTimeslots.add(timeslot);
+    }
+
+    public Appointment getLatestAppointment(){
+        int earliestTimeslot = 24; // timeslots range from 0 - 23
+        Appointment earliestAppointment = null;
+
+        for(Appointment appointment : upcomingAppointments){
+            if(appointment.getTimeslotStartTime() < earliestTimeslot ){
+                earliestTimeslot = appointment.getTimeslotStartTime();
+                earliestAppointment = appointment;
+            }
+;        }
+
+        return earliestAppointment;
+    }
+
+    public void sortAppointments(){
+        Collections.sort(upcomingAppointments);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Patient extends User {
@@ -77,5 +78,23 @@ public class Patient extends User {
     {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("Users").child("Patients").child(getID(getEmail())).setValue(this);
+    }
+
+    public Appointment getLatestAppointment(){
+        int earliestTimeslot = 24; // timeslots range from 0 - 23
+        Appointment earliestAppointment = null;
+
+        for(Appointment appointment : upcomingAppointments){
+            if(appointment.getTimeslotStartTime() < earliestTimeslot ){
+                earliestTimeslot = appointment.getTimeslotStartTime();
+                earliestAppointment = appointment;
+            }
+            ;        }
+
+        return earliestAppointment;
+    }
+
+    public void sortAppointments(){
+        Collections.sort(upcomingAppointments);
     }
 }

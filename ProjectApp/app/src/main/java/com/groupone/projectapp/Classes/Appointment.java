@@ -1,6 +1,6 @@
 package com.groupone.projectapp.Classes;
 
-public class Appointment {
+public class Appointment implements Comparable<Appointment>{
     private int timeslotStartTime;
     private Doctor doctor;
     private Patient patient;
@@ -43,5 +43,16 @@ public class Appointment {
 
     public void completeAppointment(){
         this.completed = true;
+    }
+
+    @Override
+    public int compareTo(Appointment appointment) {
+        if (this.getTimeslotStartTime() < appointment.getTimeslotStartTime()){
+            return -1;
+        } else if (this.getTimeslotStartTime() == appointment.getTimeslotStartTime()){
+            return 0;
+        }else{
+            return 1;
+        }
     }
 }
