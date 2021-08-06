@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectApp" >
         <activity
-            android:name=".DashboardActivity"
+            android:name=".DashboardDoctorActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

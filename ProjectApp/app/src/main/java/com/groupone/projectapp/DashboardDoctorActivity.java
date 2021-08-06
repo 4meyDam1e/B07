@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class DashboardActivity extends AppCompatActivity {
+import com.groupone.projectapp.Classes.User;
+
+public class DashboardDoctorActivity extends AppCompatActivity {
+
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
