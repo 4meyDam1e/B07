@@ -111,9 +111,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //TEST ACTIVITY METHODS
     public void testAppointments(View view) {
         Intent intent = new Intent(this, AppointmentsActivity.class);
         startActivity(intent);
     }
 
+    public void testProfile(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
 }
