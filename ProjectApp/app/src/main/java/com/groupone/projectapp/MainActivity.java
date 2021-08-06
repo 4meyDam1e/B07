@@ -46,40 +46,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void login(View view) {
+    public void loginAsDoctor(View view) {
         getInput();
-        verifyUserAndPassword();
+        verifyUserAndPasswordForDoctor();
+    }
+    public void loginAsPatient(View view) {
+        getInput();
+        verifyUserAndPasswordForPatient();
     }
 
-    private void verifyUserAndPassword() {
+    private void verifyUserAndPasswordForDoctor() {
         DatabaseReference refDoc = FirebaseDatabase.getInstance().getReference().child("Users").child("Doctors");
-        DatabaseReference refP = FirebaseDatabase.getInstance().getReference().child("Users").child("Patients");
 
-        refP.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot child: dataSnapshot.getChildren()) {
-                    Patient patient = child.getValue(Patient.class);
-                    if(patient.getEmail().equals(email)) {
-                        Log.i("info", "email equals");
-                        if(patient.getPassword().equals(password)) {
-                            Log.i("info", "pass equals");
-                            //resultPatient = true;
-                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
-                            startActivity(intent);
-                            return;
-                        }
-                    }
-                }
-                //Toast.makeText(MainActivity.this,"Incorrect email or password!", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.w("warning", "loadPost:onCancelled", databaseError.toException());
-            }
-        });
-        Log.i("info", "---------");
         refDoc.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -95,7 +73,35 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
-                Toast.makeText(MainActivity.this,"Incorrect email or password!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Incorrect Doctor's Email or Password!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("warning", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+    }
+
+    private void verifyUserAndPasswordForPatient() {
+        DatabaseReference refP = FirebaseDatabase.getInstance().getReference().child("Users").child("Patients");
+
+        refP.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child: dataSnapshot.getChildren()) {
+                    Patient patient = child.getValue(Patient.class);
+                    if(patient.getEmail().equals(email)) {
+                        Log.i("info", "email equals");
+                        if(patient.getPassword().equals(password)) {
+                            Log.i("info", "pass equals");
+                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                            startActivity(intent);
+                            return;
+                        }
+                    }
+                }
+                Toast.makeText(MainActivity.this,"Incorrect Patient's Email or Password!", Toast.LENGTH_SHORT).show();
             }
 
             @Override

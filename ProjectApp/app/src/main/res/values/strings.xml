@@ -3,8 +3,10 @@
     <!--  Login Page  -->
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
-    <string name="login_button">Login</string>
+    <string name="login_button_doctor">doctor Login</string>
+    <string name="login_button_patient">patient Login</string>
     <string name="signup_button">Sign Up</string>
+    <!--  Dashboard Page  -->
     <string name="title_activity_dashboard">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
