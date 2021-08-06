@@ -82,4 +82,6 @@ public class Doctor extends User {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         ref.child("Users").child("Doctors").child(User.getID(getEmail())).setValue(this);
     }
+
+
 }
