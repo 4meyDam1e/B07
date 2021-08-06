@@ -1,4 +1,4 @@
-package com.groupone.projectapp;
+package com.groupone.projectapp.Classes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.groupone.projectapp.Classes.Appointment;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
+import com.groupone.projectapp.R;
 
 import java.util.ArrayList;
 import java.util.List;

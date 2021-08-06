@@ -40,4 +40,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="350dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical|start"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="393dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="338dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_proficiency"
+            android:hint="proficiency"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAdd"
+            android:text="add"
+            android:layout_gravity="center"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="304dp"
+            android:id="@+id/proficiencyListView    " />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
