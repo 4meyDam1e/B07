@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String email;
     private String password;
+    public static final String EMAIL = "com.example.myfirstapp.EMAIL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         if(doctor.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
                             Intent intent = new Intent(MainActivity.this, DashboardDoctorActivity.class);
+                            intent.putExtra(EMAIL, email);
                             startActivity(intent);
                             return;
                         }
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // CHange to patient when done patient dashboard
     private void verifyUserAndPasswordForPatient() {
         DatabaseReference refP = FirebaseDatabase.getInstance().getReference().child("Users").child("Patients");
 
@@ -92,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                         if(patient.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
                             Intent intent = new Intent(MainActivity.this, DashboardDoctorActivity.class);
+                            intent.putExtra(EMAIL, email);
                             startActivity(intent);
                             return;
                         }
