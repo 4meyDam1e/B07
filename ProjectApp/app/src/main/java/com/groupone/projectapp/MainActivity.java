@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(doctor.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            Intent intent = new Intent(MainActivity.this, DashboardDoctorActivity.class);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.putExtra(EMAIL, email);
                             startActivity(intent);
                             return;
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(patient.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            Intent intent = new Intent(MainActivity.this, DashboardDoctorActivity.class);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.putExtra(EMAIL, email);
                             startActivity(intent);
                             return;
