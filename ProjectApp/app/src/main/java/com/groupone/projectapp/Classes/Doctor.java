@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Doctor extends User {
-    private List<String> proficiencies;
+    private List<String> specializations;
     private List<Patient> previousPatients;
     private List<Appointment> upcomingAppointments;
     private List<Integer> availableTimeslots;
@@ -26,7 +26,7 @@ public class Doctor extends User {
 
     public Doctor(String email, String firstName, String lastName, String gender, String password) {
         super(email, firstName, lastName, gender, password);
-        this.proficiencies = new ArrayList<String>();
+        this.specializations = new ArrayList<String>();
         this.previousPatients = new ArrayList<Patient>();
         this.upcomingAppointments = new ArrayList<Appointment>();
         this.availableTimeslots = new ArrayList<Integer>();
@@ -36,8 +36,8 @@ public class Doctor extends User {
         return previousPatients;
     }
 
-    public List<String> getProficiencies() {
-        return proficiencies;
+    public List<String> getSpecializations() {
+        return specializations;
     }
 
     public List<Appointment> getUpcomingAppointments() {
@@ -48,8 +48,8 @@ public class Doctor extends User {
         this.previousPatients = previousPatients;
     }
 
-    public void setProficiencies(List<String> proficiencies) {
-        this.proficiencies = proficiencies;
+    public void setSpecializations(List<String> specializations) {
+        this.specializations = specializations;
     }
 
     public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
