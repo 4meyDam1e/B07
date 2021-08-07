@@ -68,10 +68,10 @@ public class AppointmentsActivity extends AppCompatActivity {
 //
         User globalUser = SingletonUserStore.getUser();
 
-        if (globalUser instanceof Doctor)
+        //if (globalUser instanceof Doctor)
 
 
-        AppointmentsListAdapter adapter = new AppointmentsListAdapter(this, R.layout.adapter_appointments, );
-        myListView.setAdapter(adapter);
+        //AppointmentsListAdapter adapter = new AppointmentsListAdapter(this, R.layout.adapter_appointments, );
+       // myListView.setAdapter(adapter);
     }
 }
