@@ -36,7 +36,8 @@ public class DashboardActivity extends AppCompatActivity {
         TextView patEmail = (TextView) findViewById(R.id.textView8);
         TextView patFullname = (TextView) findViewById(R.id.textView9);
 
-        //appTime.setText((String)latestApp.getTimeslotStartTime());
+
+        appTime.setText(String.valueOf(latestApp.getTimeslotStartTime()));
         patFullname.setText(latestApp.getPatient().getFirstName() + " " + latestApp.getPatient().getLastName());
         patEmail.setText(latestApp.getPatient().getEmail());
         globalUser = SingletonUserStore.getUser();
