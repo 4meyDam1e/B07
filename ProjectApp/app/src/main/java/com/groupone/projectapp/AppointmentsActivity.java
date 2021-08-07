@@ -69,6 +69,7 @@ public class AppointmentsActivity extends AppCompatActivity {
         ArrayList<Appointment> appointmentsList = new ArrayList<Appointment>();
         User globalUser = SingletonUserStore.getUser();
 
+<<<<<<< HEAD
         //If its a doctor, only show upcoming appointments.
         if (globalUser instanceof Doctor) {
             Doctor doctor = (Doctor) globalUser;
@@ -89,5 +90,12 @@ public class AppointmentsActivity extends AppCompatActivity {
 
         AppointmentsListAdapter adapter = new AppointmentsListAdapter(this, R.layout.adapter_appointments, appointmentsList);
         myListView.setAdapter(adapter);
+=======
+        //if (globalUser instanceof Doctor)
+
+
+        //AppointmentsListAdapter adapter = new AppointmentsListAdapter(this, R.layout.adapter_appointments, );
+       // myListView.setAdapter(adapter);
+>>>>>>> b9499998d4bfae6160e2010652842b1dba9773e7
     }
 }

@@ -10,27 +10,28 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Patient extends User {
-    private String dob;
-    private List<Appointment> previousAppointments;
-    private List<Appointment> upcomingAppointments;
-    private List<Doctor> previousDoctors;
+
+    //private String dob;
+    private ArrayList<Appointment> previousAppointments;
+    private ArrayList<Appointment> upcomingAppointments;
+    private ArrayList<Doctor> previousDoctors;
 
     public Patient()
     {
         // Default constructor required for calls to DataSnapshot.getValue(Patient.class)
     }
 
-    public Patient(String email, String firstName, String lastName, String gender, String password, String dob)
+    public Patient(String email, String firstName, String lastName, String gender, String password)
     {
         super(email, firstName, lastName, gender, password);
         this.previousAppointments = new ArrayList<>();
         this.upcomingAppointments = new ArrayList<>();
         this.previousDoctors = new ArrayList<>();
 
-        Pattern dobPattern = Pattern.compile("[0-3][0-9]/[0-1][0-9]/[0-2][0-9]{3}");
-        Matcher dobMatcher = dobPattern.matcher(dob);
-        if (dobMatcher.matches())
-            this.dob = dob;
+       // Pattern dobPattern = Pattern.compile("[0-3][0-9]/[0-1][0-9]/[0-2][0-9]{3}");
+        //Matcher dobMatcher = dobPattern.matcher(dob);
+        //if (dobMatcher.matches())
+          //  this.dob = dob;
     }
 
     public List<Appointment> getUpcomingAppointments() {
@@ -45,11 +46,16 @@ public class Patient extends User {
         return previousDoctors;
     }
 
+<<<<<<< HEAD
     public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
+=======
+
+   public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) {
+>>>>>>> b9499998d4bfae6160e2010652842b1dba9773e7
         this.upcomingAppointments = upcomingAppointments;
     }
 
-    public void setPreviousDoctors(List<Doctor> previousDoctors) {
+    public void setPreviousDoctors(ArrayList<Doctor> previousDoctors) {
         this.previousDoctors = previousDoctors;
     }
 

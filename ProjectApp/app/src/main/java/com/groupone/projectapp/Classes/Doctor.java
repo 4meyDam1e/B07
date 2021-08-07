@@ -1,5 +1,7 @@
 package com.groupone.projectapp.Classes;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DataSnapshot;
@@ -8,15 +10,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Doctor extends User {
-    private List<String> specializations;
-    private List<Patient> previousPatients;
-    private List<Appointment> upcomingAppointments;
-    private List<Integer> availableTimeslots;
+
+    private ArrayList<String> specializations;
+    private ArrayList<Patient> previousPatients;
+    private ArrayList<Appointment> upcomingAppointments;
+    private ArrayList<Integer> availableTimeslots;
+
 
     public Doctor()
     {
@@ -32,27 +37,38 @@ public class Doctor extends User {
         this.availableTimeslots = new ArrayList<Integer>();
     }
 
-    public List<Patient> getPreviousPatients() {
+    public ArrayList<Patient> getPreviousPatients() {
         return previousPatients;
     }
 
+
     public List<String> getSpecializations() {
         return specializations;
+
     }
 
-    public List<Appointment> getUpcomingAppointments() {
+    public ArrayList<Appointment> getUpcomingAppointments() {
         return upcomingAppointments;
     }
 
-    public void setPreviousPatients(List<Patient> previousPatients) {
+    public void setPreviousPatients(ArrayList<Patient> previousPatients) {
         this.previousPatients = previousPatients;
     }
 
-    public void setSpecializations(List<String> specializations) {
-        this.specializations = specializations;
+
+    public void setSpecializations(ArrayList<String> specializations) {
+            this.specializations = specializations;
     }
 
-    public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
+    public void setAvailableTimeslots(ArrayList<Integer> availableTimeslots) {
+        this.availableTimeslots = availableTimeslots;
+    }
+
+    public List<Integer> getAvailableTimeslots() {
+        return availableTimeslots;
+    }
+
+    public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) {
         this.upcomingAppointments = upcomingAppointments;
     }
 
@@ -63,7 +79,7 @@ public class Doctor extends User {
 
         Appointment appointment = new Appointment(timeslot, this, patient);
         this.upcomingAppointments.add(appointment);
-        this.availableTimeslots.remove(timeslot);
+        this.availableTimeslots.remove(Integer.valueOf(timeslot));
     }
 
 

@@ -55,4 +55,5 @@ public class Appointment implements Comparable<Appointment>{
             return 1;
         }
     }
+
 }
