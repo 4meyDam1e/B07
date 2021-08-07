@@ -16,7 +16,7 @@ import java.util.LinkedHashSet;
 public class ProfileActivity extends AppCompatActivity {
 
     ListView proficiencyListView;
-    Button btnAdd;
+    Button btnAdd, btnRemove;
     EditText editText;
     ArrayList<String> proficienciesList;
     ArrayAdapter<String> arrayAdapter;
@@ -28,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         proficiencyListView = (ListView) findViewById(R.id.proficiencyListView);
         btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnRemove = (Button) findViewById(R.id.btnRemove);
         editText = (EditText) findViewById(R.id.et_proficiency);
 
         proficienciesList = new ArrayList<String>();
@@ -39,24 +40,41 @@ public class ProfileActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newProficiency = editText.getText().toString();
+                String proficiencyToBeAdded = editText.getText().toString();
 
                 //Don't allow duplicate proficiencies.
-                if (proficienciesList.contains(newProficiency)) {
+                if (proficienciesList.contains(proficiencyToBeAdded)) {
                     Toast.makeText(ProfileActivity.this, "Proficiency already exists",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
                 //Don't allow strings that are empty or only consist of whitespaces.
-                else if (newProficiency.trim().isEmpty()) {
+                else if (proficiencyToBeAdded.trim().isEmpty()) {
                     Toast.makeText(ProfileActivity.this, "A proficiency cannot be an empty string",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    proficienciesList.add(newProficiency);
+                    proficienciesList.add(proficiencyToBeAdded);
                     proficiencyListView.setAdapter(arrayAdapter);
                     arrayAdapter.notifyDataSetChanged();
                 }
 
+            }
+        });
+
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String proficiencyToBeDeleted = editText.getText().toString();
+
+                if(!proficienciesList.contains(proficiencyToBeDeleted)) {
+                    Toast.makeText(ProfileActivity.this, "No such proficiency found",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    proficienciesList.remove(proficiencyToBeDeleted);
+                    proficiencyListView.setAdapter(arrayAdapter);
+                    arrayAdapter.notifyDataSetChanged();
+                }
             }
         });
     }
