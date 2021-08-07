@@ -18,6 +18,9 @@ import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
 import com.groupone.projectapp.Classes.SingletonUserStore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private String email;
@@ -123,6 +126,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void testProfile(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void testDash(View view) {
+        Doctor doctor = new Doctor("abc@123.ca", "Alpha", "Beta", "male", "123" );
+        SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(doctor);
+
+        Patient patient = new Patient("help", "f", "l", "fem", "123123");
+
+        ArrayList timeslots = new ArrayList<Integer>();
+        timeslots.add(2);
+
+
+        doctor.setAvailableTimeslots(timeslots);
+
+        doctor.createAppointment(patient, 2);
+
+        Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
     }
 }

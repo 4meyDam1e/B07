@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Patient extends User {
     private String healthCardNumber;
-    private List<Appointment> upcomingAppointments;
-    private List<Doctor> previousDoctors;
+    private ArrayList<Appointment> upcomingAppointments;
+    private ArrayList<Doctor> previousDoctors;
 
     public Patient()
     {
@@ -48,11 +48,11 @@ public class Patient extends User {
         this.healthCardNumber = healthCardNumber;
     }
 
-    public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
+    public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) {
         this.upcomingAppointments = upcomingAppointments;
     }
 
-    public void setPreviousDoctors(List<Doctor> previousDoctors) {
+    public void setPreviousDoctors(ArrayList<Doctor> previousDoctors) {
         this.previousDoctors = previousDoctors;
     }
 
