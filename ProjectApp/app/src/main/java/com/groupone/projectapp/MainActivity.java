@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
+import com.groupone.projectapp.Classes.SingletonUserStore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("info", "pass equals");
                             Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.putExtra(EMAIL, email);
+                            SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(doctor);
                             startActivity(intent);
                             return;
                         }
@@ -96,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("info", "pass equals");
                             Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.putExtra(EMAIL, email);
+                            SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(patient);
                             startActivity(intent);
                             return;
                         }

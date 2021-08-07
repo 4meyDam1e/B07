@@ -38,7 +38,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-
+            android:windowSoftInputMode="adjustResize"
             android:name=".ProfileActivity"
             android:label="View user profile"
             android:parentActivityName=".MainActivity">
