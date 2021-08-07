@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(doctor.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                             intent.putExtra(EMAIL, email);
                             SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(doctor);
                             startActivity(intent);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(patient.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                             intent.putExtra(EMAIL, email);
                             SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(patient);
                             startActivity(intent);

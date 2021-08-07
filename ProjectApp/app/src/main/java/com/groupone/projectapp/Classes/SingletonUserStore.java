@@ -2,7 +2,7 @@ package com.groupone.projectapp.Classes;
 
 public class SingletonUserStore {
     private static SingletonUserStore globalUser = null;
-    private User user;
+    private static User user;
 
     private SingletonUserStore(User user) {
         this.user = user;
@@ -13,5 +13,13 @@ public class SingletonUserStore {
             return new SingletonUserStore(user);
         else
             return globalUser;
+    }
+
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User userToSet) {
+        user = userToSet;
     }
 }
