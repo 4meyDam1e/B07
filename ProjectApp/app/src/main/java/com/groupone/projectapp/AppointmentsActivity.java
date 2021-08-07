@@ -9,6 +9,8 @@ import android.widget.ListView;
 import com.groupone.projectapp.Classes.Appointment;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
+import com.groupone.projectapp.Classes.SingletonUserStore;
+import com.groupone.projectapp.Classes.User;
 
 import java.util.ArrayList;
 
@@ -20,9 +22,9 @@ public class AppointmentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointments);
-//        Log.d(TAG, "onCreate: Started");
-//        ListView myListView = (ListView) findViewById(R.id.listView);
-//
+        Log.d(TAG, "onCreate: Started");
+        ListView myListView = (ListView) findViewById(R.id.listView);
+
 //        Doctor d1 = new Doctor("doctor1", "doc1@gmail.com", "Doctor1", new ArrayList<String>(), new ArrayList<String>(), new ArrayList<Integer>());
 //        Patient p1 = new Patient("patient1", "pat1@gmail.com",  "Patient1", 1234567890, new ArrayList<String>());
 //        Patient p2 = new Patient("patient2", "pat2@gmail.com",  "Patient2", 1234567890, new ArrayList<String>());
@@ -64,7 +66,12 @@ public class AppointmentsActivity extends AppCompatActivity {
 //        appointmentsList.add(a11);
 //        appointmentsList.add(a12);
 //
-//        AppointmentsListAdapter adapter = new AppointmentsListAdapter(this, R.layout.adapter_appointments, appointmentsList);
-//        myListView.setAdapter(adapter);
+        User globalUser = SingletonUserStore.getUser();
+
+        if (globalUser instanceof Doctor)
+
+
+        AppointmentsListAdapter adapter = new AppointmentsListAdapter(this, R.layout.adapter_appointments, );
+        myListView.setAdapter(adapter);
     }
 }

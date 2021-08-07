@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/welcomeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -228,6 +228,7 @@
     <!--        app:layout_constraintVertical_bias="1.0" />-->
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/profileButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -244,6 +245,14 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="32dp"
         android:text="@string/past_patients"
+=======
+        android:id="@+id/historyButton"
+        android:layout_width="112dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="12dp"
+        android:text="history"
+>>>>>>> a690cd2241d6711878304124ae2a18e10c07df14
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

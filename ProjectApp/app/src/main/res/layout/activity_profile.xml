@@ -62,7 +62,7 @@
         tools:layout_editor_absoluteX="-3dp">
 
         <EditText
-            android:id="@+id/et_proficiency"
+            android:id="@+id/et_specialization"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="28dp"
@@ -94,7 +94,7 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/proficiencyListView"
+            android:id="@+id/specializationListView"
             android:layout_width="match_parent"
             android:layout_height="304dp" />
 

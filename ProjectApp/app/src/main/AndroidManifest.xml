@@ -38,8 +38,16 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:windowSoftInputMode="adjustResize"
             android:name=".ProfileActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:label="View user profile"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".PlusActivity"
             android:label="View user profile"
             android:parentActivityName=".MainActivity">
             <meta-data
