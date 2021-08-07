@@ -10,16 +10,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Patient extends User {
-<<<<<<< HEAD
-    private String healthCardNumber;
+
+    private String dob;
+    private ArrayList<Appointment> previousAppointments;
     private ArrayList<Appointment> upcomingAppointments;
     private ArrayList<Doctor> previousDoctors;
-=======
-    private String dob;
-    private List<Appointment> previousAppointments;
-    private List<Appointment> upcomingAppointments;
-    private List<Doctor> previousDoctors;
->>>>>>> a690cd2241d6711878304124ae2a18e10c07df14
 
     public Patient()
     {
@@ -47,15 +42,8 @@ public class Patient extends User {
         return previousDoctors;
     }
 
-<<<<<<< HEAD
-    public void setHealthCardNumber(String healthCardNumber) {
-        this.healthCardNumber = healthCardNumber;
-    }
 
-    public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) {
-=======
-   public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
->>>>>>> a690cd2241d6711878304124ae2a18e10c07df14
+   public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) {
         this.upcomingAppointments = upcomingAppointments;
     }
 

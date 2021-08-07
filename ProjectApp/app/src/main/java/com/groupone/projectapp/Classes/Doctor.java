@@ -10,22 +10,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Doctor extends User {
-<<<<<<< HEAD
-    private ArrayList<String> proficiencies;
+
+    private ArrayList<String> specializations;
     private ArrayList<Patient> previousPatients;
     private ArrayList<Appointment> upcomingAppointments;
     private ArrayList<Integer> availableTimeslots;
-=======
-    private List<String> specializations;
-    private List<Patient> previousPatients;
-    private List<Appointment> upcomingAppointments;
-    private List<Integer> availableTimeslots;
->>>>>>> a690cd2241d6711878304124ae2a18e10c07df14
+
 
     public Doctor()
     {
@@ -45,13 +41,10 @@ public class Doctor extends User {
         return previousPatients;
     }
 
-<<<<<<< HEAD
-    public ArrayList<String> getProficiencies() {
-        return proficiencies;
-=======
+
     public List<String> getSpecializations() {
         return specializations;
->>>>>>> a690cd2241d6711878304124ae2a18e10c07df14
+
     }
 
     public ArrayList<Appointment> getUpcomingAppointments() {
@@ -62,13 +55,9 @@ public class Doctor extends User {
         this.previousPatients = previousPatients;
     }
 
-<<<<<<< HEAD
-    public void setProficiencies(ArrayList<String> proficiencies) {
-        this.proficiencies = proficiencies;
-=======
-    public void setSpecializations(List<String> specializations) {
-        this.specializations = specializations;
->>>>>>> a690cd2241d6711878304124ae2a18e10c07df14
+
+    public void setSpecializations(ArrayList<String> specializations) {
+            this.specializations = specializations;
     }
 
     public void setAvailableTimeslots(ArrayList<Integer> availableTimeslots) {
