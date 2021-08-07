@@ -22,4 +22,6 @@ public class SingletonUserStore {
     public static void setUser(User userToSet) {
         user = userToSet;
     }
+
+    public static boolean isDoctor() { return user instanceof Doctor; }
 }

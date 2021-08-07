@@ -26,6 +26,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
+
         specializationListView = (ListView) findViewById(R.id.specializationListView);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnRemove = (Button) findViewById(R.id.btnRemove);

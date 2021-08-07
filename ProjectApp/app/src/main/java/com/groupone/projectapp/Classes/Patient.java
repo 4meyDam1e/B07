@@ -37,11 +37,15 @@ public class Patient extends User {
         return upcomingAppointments;
     }
 
+    public List<Appointment> getPreviousAppointments() {
+        return previousAppointments;
+    }
+
     public List<Doctor> getPreviousDoctors() {
         return previousDoctors;
     }
 
-   public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
+    public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
         this.upcomingAppointments = upcomingAppointments;
     }
 
@@ -87,7 +91,7 @@ public class Patient extends User {
         return earliestAppointment;
     }
 
-    public void sortAppointments(){
+    public void sortUpcomingAppointments(){
         Collections.sort(upcomingAppointments);
     }
 }
