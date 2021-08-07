@@ -24,4 +24,5 @@ public class SingletonUserStore {
     }
 
     public static boolean isDoctor() { return user instanceof Doctor; }
+    public static boolean isPatient() { return user instanceof Patient; }
 }

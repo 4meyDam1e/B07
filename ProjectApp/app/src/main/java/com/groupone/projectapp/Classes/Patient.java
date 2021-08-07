@@ -46,12 +46,7 @@ public class Patient extends User {
         return previousDoctors;
     }
 
-<<<<<<< HEAD
-    public void setUpcomingAppointments(List<Appointment> upcomingAppointments) {
-=======
-
    public void setUpcomingAppointments(ArrayList<Appointment> upcomingAppointments) {
->>>>>>> b9499998d4bfae6160e2010652842b1dba9773e7
         this.upcomingAppointments = upcomingAppointments;
     }
 
@@ -92,8 +87,7 @@ public class Patient extends User {
                 earliestTimeslot = appointment.getTimeslotStartTime();
                 earliestAppointment = appointment;
             }
-            ;        }
-
+        }
         return earliestAppointment;
     }
 

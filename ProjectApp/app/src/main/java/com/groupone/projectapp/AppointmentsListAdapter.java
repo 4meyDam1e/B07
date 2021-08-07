@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.groupone.projectapp.Classes.Appointment;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
+import com.groupone.projectapp.Classes.SingletonUserStore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +40,20 @@ public class AppointmentsListAdapter extends ArrayAdapter<Appointment> {
         convertView = inflater.inflate(mResource, parent, false);
 
         TextView tvTimeSlotStartTime = (TextView) convertView.findViewById(R.id.textView1);
-        TextView tvPatientName = (TextView) convertView.findViewById(R.id.textView2);
-        TextView tvPatientEmail = (TextView) convertView.findViewById(R.id.textView3);
+        TextView tvPersonName = (TextView) convertView.findViewById(R.id.textView2);
+        TextView tvPatientGender = (TextView) convertView.findViewById(R.id.textView3);
 
-        //Get the info about appointment that we want to view.
-        tvTimeSlotStartTime.setText(String.valueOf(appointment.getTimeslotStartTime()));
-        tvPatientName.setText(appointment.getPatient().getName());
-        tvPatientEmail.setText(appointment.getPatient().getEmail());
+        tvTimeSlotStartTime.setText("Start time: " + String.valueOf(appointment.getTimeslotStartTime()));
+        //Get the info about the appointment that we want to view.
+        if (SingletonUserStore.isDoctor()) {
+            tvPersonName.setText("Patient Name: " + appointment.getPatient().getName());
+            tvPatientGender.setText("Gender: " + appointment.getPatient().getGender());
+        }
+        if (SingletonUserStore.isPatient()) {
+            tvPersonName.setText("Doctor Name: " + appointment.getDoctor().getName());
+            tvPatientGender.setText("Gender: " + appointment.getDoctor().getGender());
+        }
+
 
         return convertView;
     }
