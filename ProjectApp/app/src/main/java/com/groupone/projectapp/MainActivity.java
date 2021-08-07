@@ -1,7 +1,5 @@
 package com.groupone.projectapp;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
-import com.groupone.projectapp.Classes.User;
 
 public class MainActivity extends AppCompatActivity {
 
     private String email;
     private String password;
+    public static final String EMAIL = "com.example.myfirstapp.EMAIL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(doctor.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            intent.putExtra(EMAIL, email);
                             startActivity(intent);
                             return;
                         }
@@ -83,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // CHange to patient when done patient dashboard
     private void verifyUserAndPasswordForPatient() {
         DatabaseReference refP = FirebaseDatabase.getInstance().getReference().child("Users").child("Patients");
 
@@ -95,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.i("info", "email equals");
                         if(patient.getPassword().equals(password)) {
                             Log.i("info", "pass equals");
-                            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            intent.putExtra(EMAIL, email);
                             startActivity(intent);
                             return;
                         }
