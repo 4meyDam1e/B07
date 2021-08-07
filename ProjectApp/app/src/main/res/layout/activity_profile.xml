@@ -2,20 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profilePic"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/profilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/profile_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -27,7 +26,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePic" />
 
     <TextView
         android:id="@+id/textView5"
@@ -53,23 +52,44 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="393dp"
+        android:layout_width="411dp"
+        android:layout_height="374dp"
+        android:layout_marginTop="50dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        tools:layout_editor_absoluteX="0dp">
 
         <EditText
             android:id="@+id/et_proficiency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
             android:hint="proficiency" />
 
-        <Button
-            android:id="@+id/btnAdd"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="add" />
+            android:orientation="horizontal"
+            android:fitsSystemWindows="true">
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="75dp"
+                android:text="add" />
+
+            <Button
+                android:id="@+id/btnRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="80dp"
+                android:text="remove" />
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/proficiencyListView"
@@ -77,5 +97,29 @@
             android:layout_height="304dp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/title1TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="8dp"
+        android:text="User Details"
+        android:textColor="@color/purple_500"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/title2TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:text="Proficiencies"
+        android:textColor="@color/purple_500"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

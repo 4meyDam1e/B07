@@ -40,15 +40,23 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String newProficiency = editText.getText().toString();
-                //Don't allow duplicate proficiences
-                if (!proficienciesList.contains(newProficiency)) {
+
+                //Don't allow duplicate proficiencies.
+                if (proficienciesList.contains(newProficiency)) {
+                    Toast.makeText(ProfileActivity.this, "Proficiency already exists",
+                            Toast.LENGTH_LONG).show();
+                }
+                //Don't allow strings that are empty or only consist of whitespaces.
+                else if (newProficiency.trim().isEmpty()) {
+                    Toast.makeText(ProfileActivity.this, "A proficiency cannot be an empty string",
+                            Toast.LENGTH_LONG).show();
+                }
+                else {
                     proficienciesList.add(newProficiency);
                     proficiencyListView.setAdapter(arrayAdapter);
                     arrayAdapter.notifyDataSetChanged();
                 }
-                else
-                    Toast.makeText(ProfileActivity.this, "Proficiency already exists",
-                            Toast.LENGTH_SHORT).show();
+
             }
         });
     }
