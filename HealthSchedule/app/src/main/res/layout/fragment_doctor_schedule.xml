@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".doctorScheduleFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ds_textViewSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:text="My schedule (select one to remove from schedule)"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ListView
+                android:id="@+id/ds_listViewSchedule"
+                android:layout_width="0dp"
+                android:layout_height="350dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ds_textViewSchedule"
+                app:layout_constraintTop_toBottomOf="@+id/ds_textViewSchedule" />
+
+            <TextView
+                android:id="@+id/ds_textViewNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Add a new timeslot to schedule"
+                app:layout_constraintStart_toStartOf="@+id/ds_textViewSchedule"
+                app:layout_constraintTop_toBottomOf="@+id/ds_listViewSchedule" />
+
+            <Spinner
+                android:id="@+id/ds_spinner"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintEnd_toEndOf="@+id/ds_listViewSchedule"
+                app:layout_constraintStart_toStartOf="@+id/ds_textViewSchedule"
+                app:layout_constraintTop_toBottomOf="@+id/ds_textViewNew"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/ds_buttonSet"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="6dp"
+                android:text="Set"
+                app:layout_constraintEnd_toEndOf="@+id/ds_listViewSchedule"
+                app:layout_constraintStart_toStartOf="@+id/ds_textViewSchedule"
+                app:layout_constraintTop_toBottomOf="@+id/ds_spinner" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>

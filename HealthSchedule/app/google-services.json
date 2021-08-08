@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "212963486497",
+    "project_id": "health-schedule-84643",
+    "storage_bucket": "health-schedule-84643.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212963486497:android:0a3b1e73add641c5eeac60",
+        "android_client_info": {
+          "package_name": "com.example.health"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212963486497-9a9jd9pfpqlkrbtf749batjidd4ear1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkjYzkRQLZhKOjkubycd3h4BYpjNE_3I0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212963486497-9a9jd9pfpqlkrbtf749batjidd4ear1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
