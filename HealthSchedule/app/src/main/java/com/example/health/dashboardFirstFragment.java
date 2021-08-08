@@ -27,7 +27,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class dashboardFirstFragment extends dashboardFragment {
-    User tag;
     ListView listView;
     ListView listViewPast;
     List<Appointment> appointments;

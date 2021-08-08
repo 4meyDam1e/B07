@@ -27,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.w3c.dom.Text;
 
 public class profileFragment extends dashboardFragment {
-    User tag;
     Patient p = (Patient)tag;
 
     private EditText firstname;

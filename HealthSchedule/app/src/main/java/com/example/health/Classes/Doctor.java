@@ -1,6 +1,7 @@
 package com.example.health.Classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +9,18 @@ import java.util.List;
 public class Doctor extends User {
     private AppointmentManager appointmentManager;
     private List<Integer> schedule;
+
+    public static List<String> proficiencyList(String s) {
+        List<String> tmp = new ArrayList<String>(Arrays.asList(s.split(",")));
+        if (tmp.size() == 0) return tmp;
+        Collections.sort(tmp);
+        List<String> res = new ArrayList<String>();
+        res.add(tmp.get(0).trim());
+        for (int i = 1; i < tmp.size(); i += 1)
+            if (!tmp.get(i - 1).trim().equals(tmp.get(i).trim()))
+                res.add(tmp.get(i).trim());
+        return res;
+    }
 
     public Doctor() {
         info = new DoctorInfo();

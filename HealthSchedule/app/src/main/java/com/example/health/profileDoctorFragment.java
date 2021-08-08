@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class profileDoctorFragment extends dashboardFragment {
-    User tag;
     Doctor d = (Doctor) tag;
 
     private EditText firstname;

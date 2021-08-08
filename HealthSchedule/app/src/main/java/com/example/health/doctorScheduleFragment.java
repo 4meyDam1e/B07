@@ -29,7 +29,6 @@ import java.util.List;
 public class doctorScheduleFragment extends dashboardFragment {
     final int workStartTime = 10, workEndTime = 17;
 
-    User tag;
     Doctor user;
     Spinner spinner;
     Button button;

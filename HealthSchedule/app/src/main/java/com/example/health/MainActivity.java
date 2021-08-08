@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.health.Classes.Doctor;
 import com.example.health.Classes.User;
 import com.example.health.Classes.InputChecker;
 import com.google.firebase.database.DataSnapshot;

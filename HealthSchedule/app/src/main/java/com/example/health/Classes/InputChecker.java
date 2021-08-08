@@ -1,6 +1,7 @@
 package com.example.health.Classes;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,14 +32,17 @@ public class InputChecker {
     }
 
     public static boolean checkProficiency(String proficiency) {
-        if (proficiency.length() < 1) return false;
-        Pattern proficiencyPattern = Pattern.compile("(\\s*(\\w+\\s?\\w*)+\\s*,)+\\s*");
-        Matcher proficiencyMatcher = proficiencyPattern.matcher(proficiency + ",");
-        return proficiencyMatcher.matches();
+        if (proficiency == "") return true;
+        List<String> ps = Doctor.proficiencyList(proficiency);
+        if (ps.size() == 0) return false;
+        for (String p : ps)
+            if (!checkSingleProficiency(p))
+                return false;
+        return true;
     }
 
     public static boolean checkSingleProficiency(String proficiency) {
-        if (proficiency.length() < 1) return false;
+        if (proficiency.length() < 2) return false;
         Pattern proficiencyPattern = Pattern.compile("\\w+\\s?\\w+");
         Matcher proficiencyMatcher = proficiencyPattern.matcher(proficiency);
         return proficiencyMatcher.matches();
