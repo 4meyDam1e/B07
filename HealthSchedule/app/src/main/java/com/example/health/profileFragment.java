@@ -1,16 +1,21 @@
 package com.example.health;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.health.Classes.InputChecker;
 import com.example.health.Classes.Patient;
@@ -27,13 +32,12 @@ public class profileFragment extends dashboardFragment {
 
     private EditText firstname;
     private EditText lastname;
-    private EditText birthday;
+    private TextView birthday;
     private EditText password;
-    private EditText healthcard;
+    private EditText healthCard;
     private Button btn;
     private Button btn_logout;
-
-
+    private Button btn_birthday;
 
     public profileFragment() {
         // Required empty public constructor
@@ -52,15 +56,15 @@ public class profileFragment extends dashboardFragment {
         firstname.setText(p.getFirstName());
         lastname.setText(p.getLastName());
         birthday.setText(p.getBirthday());
-        healthcard.setText(p.getHealthCard());
+        healthCard.setText(p.getHealthCard());
     }
 
     public void initialState() {
         firstname = view.findViewById(R.id.p_editTextTextFirstName);
         lastname = view.findViewById(R.id.p_editTextTextLastName);
-        birthday = view.findViewById(R.id.p_editTextTextBirthday);
+        birthday = view.findViewById(R.id.p_textViewShowBirthday);
         password = view.findViewById(R.id.p_editTextTextPassword);
-        healthcard = view.findViewById(R.id.p_editTextTextHealthcard);
+        healthCard = view.findViewById(R.id.p_editTextTextHealthcard);
         btn = view.findViewById(R.id.p_buttonSignUp);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +77,7 @@ public class profileFragment extends dashboardFragment {
                     showMessage("Last name format incorrect!");
                     return;
                 }
-                if (!InputChecker.checkBirthday(birthday.getText().toString())) {
-                    showMessage("Birthday format incorrect!");
-                    return;
-                }
-                if (!InputChecker.checkHealthCard(healthcard.getText().toString())) {
+                if (!InputChecker.checkHealthCard(healthCard.getText().toString())) {
                     showMessage("Health Card format incorrect!");
                     return;
                 }
@@ -99,7 +99,7 @@ public class profileFragment extends dashboardFragment {
                                 if (!password.getText().toString().equals(""))
                                     p.setPassword(password.getText().toString());
                                 p.setBirthday(birthday.getText().toString());
-                                p.setHealthCard(healthcard.getText().toString());
+                                p.setHealthCard(healthCard.getText().toString());
                                 ref.setValue(p, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(DatabaseError error,
@@ -123,6 +123,31 @@ public class profileFragment extends dashboardFragment {
             @Override
             public void onClick(View view) {
                 logout();
+            }
+        });
+        btn_birthday = view.findViewById(R.id.p_buttonBirthday);
+        btn_birthday.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View view) {
+                String bd = birthday.getText().toString();
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view,
+                                                  int year, int month, int dayOfMonth) {
+                                birthday.setText(
+                                        String.format("%04d", year) + "/"
+                                        + String.format("%02d", month + 1) + "/"
+                                        + String.format("%02d", dayOfMonth)
+                                );
+                            }
+                        },
+                        Integer.parseInt(bd.substring(0, 4)),
+                        Integer.parseInt(bd.substring(5, 7)) - 1,
+                        Integer.parseInt(bd.substring(8, 10)));
+                datePickerDialog.show();
             }
         });
     }

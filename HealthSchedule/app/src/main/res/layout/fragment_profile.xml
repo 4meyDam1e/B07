@@ -29,21 +29,10 @@
                 android:id="@+id/p_HealthcardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:text="Health Card"
                 app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextBirthday" />
-
-            <EditText
-                android:id="@+id/p_editTextTextBirthday"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:autofillHints="dd/mm/yyyy"
-                android:ems="10"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_birthdayTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:layout_constraintTop_toBottomOf="@+id/p_textViewShowBirthday" />
 
             <TextView
                 android:id="@+id/p_birthdayTextView"
@@ -144,6 +133,24 @@
                 app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/p_firstNameTextView"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/p_textViewShowBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="1900/01/01"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/p_birthdayTextView" />
+
+            <Button
+                android:id="@+id/p_buttonBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select"
+                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
+                app:layout_constraintTop_toBottomOf="@+id/p_birthdayTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
