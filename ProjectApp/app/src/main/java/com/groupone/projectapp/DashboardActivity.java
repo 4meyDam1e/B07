@@ -32,7 +32,7 @@ public class DashboardActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.welcomeTitle);
         textView.setText("Welcome, " + SingletonUserStore.getUser().getFirstName() + " " +SingletonUserStore.getUser().getLastName());
 
-        Appointment latestApp = ((Doctor) SingletonUserStore.getUser()).getLatestAppointment();
+        Appointment latestApp = ((Patient) SingletonUserStore.getUser()).getLatestAppointment();
 
         TextView appTime = (TextView) findViewById(R.id.textView7);
         TextView patEmail = (TextView) findViewById(R.id.textView8);

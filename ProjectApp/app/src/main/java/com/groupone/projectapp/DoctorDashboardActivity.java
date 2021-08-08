@@ -13,6 +13,7 @@ import com.groupone.projectapp.Classes.Appointment;
 import com.groupone.projectapp.Classes.Doctor;
 import com.groupone.projectapp.Classes.Patient;
 import com.groupone.projectapp.Classes.SingletonUserStore;
+import com.groupone.projectapp.Classes.User;
 
 public class DoctorDashboardActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class DoctorDashboardActivity extends AppCompatActivity {
         appTime.setText(String.valueOf(latestApp.getTimeslotStartTime()));
         patFullname.setText(latestApp.getPatient().getFirstName() + " " + latestApp.getPatient().getLastName());
         patEmail.setText(latestApp.getPatient().getEmail());
-        globalUser = SingletonUserStore.getUser();
+        User globalUser = SingletonUserStore.getUser();
 
 
         //Patients/Doctors (History) button

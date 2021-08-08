@@ -131,17 +131,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void testDash(View view) {
         Doctor doctor = new Doctor("abc@123.ca", "Alpha", "Beta", "male", "123" );
-        SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(doctor);
 
         Patient patient = new Patient("help", "f", "l", "fem", "123123");
 
+       SingletonUserStore singletonUserStore = SingletonUserStore.getGlobalUser(patient);
+
         ArrayList timeslots = new ArrayList<Integer>();
         timeslots.add(2);
-
+        timeslots.add(3);
+        timeslots.add(4);
+        timeslots.add(5);
+        timeslots.add(6);
+        timeslots.add(7);
 
         doctor.setAvailableTimeslots(timeslots);
 
-        doctor.createAppointment(patient, 2);
+        patient.createAppointment(doctor, 2);
+        patient.createAppointment(doctor, 3);
+        patient.createAppointment(doctor, 4);
+        patient.createAppointment(doctor, 5);
+        patient.createAppointment(doctor, 6);
+        patient.createAppointment(doctor, 7);
+
+
 
         Intent intent = new Intent(this, DashboardActivity.class);
         startActivity(intent);
