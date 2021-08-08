@@ -61,4 +61,9 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void testAppointments(View view) {
+        Intent intent = new Intent(this, AppointmentsActivity.class);
+        startActivity(intent);
+    }
+
 }

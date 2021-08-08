@@ -54,7 +54,6 @@ public class AppointmentsListAdapter extends ArrayAdapter<Appointment> {
             tvPatientGender.setText("Gender: " + appointment.getDoctor().getGender());
         }
 
-
         return convertView;
     }
 }
