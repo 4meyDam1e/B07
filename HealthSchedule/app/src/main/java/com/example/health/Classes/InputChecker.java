@@ -39,7 +39,7 @@ public class InputChecker {
 
     public static boolean checkSingleProficiency(String proficiency) {
         if (proficiency.length() < 1) return false;
-        Pattern proficiencyPattern = Pattern.compile("\\w+");
+        Pattern proficiencyPattern = Pattern.compile("\\w+\\s?\\w+");
         Matcher proficiencyMatcher = proficiencyPattern.matcher(proficiency);
         return proficiencyMatcher.matches();
     }
