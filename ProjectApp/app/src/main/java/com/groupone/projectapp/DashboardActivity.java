@@ -2,9 +2,11 @@ package com.groupone.projectapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.view.View;
 import android.widget.TextView;
 
 import com.groupone.projectapp.Classes.Appointment;
@@ -53,4 +55,10 @@ public class DashboardActivity extends AppCompatActivity {
 
         Log.i("info", SingletonUserStore.getUser().getFirstName());
     }
+
+    public void testPlusPatient(View view) {
+        Intent intent = new Intent(this, PlusActivity.class);
+        startActivity(intent);
+    }
+
 }
