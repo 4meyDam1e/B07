@@ -18,8 +18,9 @@ public class InputChecker {
     }
 
     public static boolean checkName(String name) {
-        if (name.length() < 1) return false;
-        return true;
+        Pattern namePattern = Pattern.compile("[A-Z]([a-z])*");
+        Matcher nameMatcher = namePattern.matcher(name);
+        return nameMatcher.matches();
     }
 
     public static boolean checkBirthday(String birthday) {
