@@ -61,7 +61,7 @@
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
-                android:id="@+id/p_buttonDelete"
+                android:id="@+id/p_buttonDeleteAccount"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
