@@ -47,6 +47,8 @@ public class dashboardFirstFragment extends dashboardFragment {
     public void update(User user)
     {
         if (view == null) { tag = user; return; }
+        List<Integer> upcomingID = new ArrayList<>();
+        List<Integer> pastID = new ArrayList<>();
         if (user.getIdentity() == "patient")
             appointments = ((Patient) user).appointmentList();
         else
@@ -57,10 +59,19 @@ public class dashboardFirstFragment extends dashboardFragment {
         ArrayAdapter<String> adapterPast = new ArrayAdapter<>(
                 getContext(),
                 android.R.layout.simple_list_item_1);
-        for (Appointment a : appointments) {
+        for (int i = 0; i < appointments.size(); i += 1) {
+            Appointment a = appointments.get(i);
             ArrayAdapter<String> x;
-            if (a.done()) x = adapterPast;
-            else x = adapter;
+            List<Integer> y;
+            if (a.done()) {
+                x = adapterPast;
+                y = pastID;
+            }
+            else {
+                x = adapter;
+                y = upcomingID;
+            }
+            y.add(i);
             if (user.getIdentity() == "patient")
                 x.add("Dr." + a.getDoctorInfo().name() + "    " + a.timeToString() +
                         "\n" + a.dateToString());
@@ -71,12 +82,13 @@ public class dashboardFirstFragment extends dashboardFragment {
         listView.setAdapter(adapter);
         listViewPast.setAdapter(adapterPast);
         if (user.getIdentity() == "doctor") {
-            AdapterView.OnItemClickListener x = new AdapterView.OnItemClickListener() {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    int j = upcomingID.get(i);
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                             .child("Users")
-                            .child(User.getID(appointments.get(i).getPatientInfo().getEmail()));
+                            .child(User.getID(appointments.get(j).getPatientInfo().getEmail()));
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
@@ -102,9 +114,40 @@ public class dashboardFirstFragment extends dashboardFragment {
                         }
                     });
                 }
-            };
-            listView.setOnItemClickListener(x);
-            listViewPast.setOnItemClickListener(x);
+            });
+            listViewPast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    int j = pastID.get(i);
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                            .child("Users")
+                            .child(User.getID(appointments.get(j).getPatientInfo().getEmail()));
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            if (snapshot.getValue() != null) {
+                                Patient p = snapshot.getValue(Patient.class);
+                                String msg = "Name: " + p.name() + "\n"
+                                        + "Gender: " + p.getGender() + "\n"
+                                        + "Birthday: " + p.getBirthday() + "\n"
+                                        + "Health Card: " + p.getHealthCard() + "\n"
+                                        + "Previous Doctor list:\n";
+                                List<String> dl = p.previousDoctorList();
+                                for (int i = 0; i < dl.size() - 1; i += 1)
+                                    msg = msg + dl.get(i) + ", ";
+                                if (dl.size() > 0)
+                                    msg = msg + dl.get(dl.size() - 1);
+                                showMessage(msg);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
+                            System.out.println("Database read failed: " + error.getCode());
+                        }
+                    });
+                }
+            });
         }
     }
 
