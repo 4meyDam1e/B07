@@ -119,10 +119,20 @@ public class profileDoctorFragment extends dashboardFragment {
         btn_delete_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
-                        .child("Users").child(User.getID(user.getEmail()));
-                ref.removeValue();
-                logout();
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Are you sure to change the profile?")
+                        .setTitle("Message")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                                        .child("Users").child(User.getID(user.getEmail()));
+                                ref.removeValue();
+
+                                logout();
+                            }
+                        })
+                        .setNegativeButton("Cancel", null);
+                builder.create().show();
             }
         });
     }
