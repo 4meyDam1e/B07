@@ -15,139 +15,152 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/p_editTextTextHealthcard"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:ems="10"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_HealthcardTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/p_HealthcardTextView"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_healthCardTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Health Card"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_textViewShowBirthday" />
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Health Card"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_buttonBirthday">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/p_editTextTextHealthcard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_firstNameTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:hint="First Name"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
+                    android:id="@+id/p_editTextTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_lastNameTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Last Name"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_firstNameTextField">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
+                    android:id="@+id/p_editTextTextLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_passwordTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Password"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_lastNameTextField"
+                app:helperTextEnabled="true"
+                app:helperText="*Leave blank if you don't want to change">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="textPassword"
+                    android:id="@+id/p_editTextTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/p_birthdayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
                 android:text="Birthday (yyyy/mm/dd)"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextPassword" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_passwordTextField" />
 
             <Button
                 android:id="@+id/p_buttonSignUp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="Save"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextHealthcard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_healthCardTextField"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/p_buttonLogout"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="Logout"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/p_buttonSignUp"
                 tools:ignore="UsingOnClickInXml" />
-
-
-            <EditText
-                android:id="@+id/p_editTextTextLastName"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:autofillHints="name"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_lastNameTextView"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
-
-
-            <TextView
-                android:id="@+id/p_lastNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Last name"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextFirstName" />
-
-            <EditText
-                android:id="@+id/p_editTextTextPassword"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:autofillHints="password"
-                android:ems="10"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_passwordTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/p_passwordTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Password (leave blank if not changed)"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextLastName" />
-
-            <TextView
-                android:id="@+id/p_firstNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:text="First name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/p_editTextTextFirstName"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="24dp"
-                android:autofillHints="name"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_firstNameTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/p_textViewShowBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:text="2000/01/01"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/p_birthdayTextView" />
 
             <Button
                 android:id="@+id/p_buttonBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
                 android:text="Select"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/p_birthdayTextView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

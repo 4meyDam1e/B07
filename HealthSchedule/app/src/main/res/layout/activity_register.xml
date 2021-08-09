@@ -8,32 +8,25 @@
 
     <Button
         android:id="@+id/r_buttonSignUp"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
         android:onClick="submitRequest"
         android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="@+id/r_editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_radioGroupIdentity"
         tools:ignore="UsingOnClickInXml" />
-
-    <TextView
-        android:id="@+id/r_emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/r_radioGroupGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/r_genderTextView">
 
         <RadioButton
@@ -50,66 +43,141 @@
             android:text="Female" />
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/r_editTextTextEmailAddress"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="24dp"
-        android:autofillHints="emailAddress"
-        android:ems="10"
-        android:hint="example@abc.com"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_emailTextView"
-        tools:ignore="TextContrastCheck" />
-
-    <EditText
-        android:id="@+id/r_editTextTextLastName"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:autofillHints="name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/r_editTextTextEmailAddress"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_lastNameTextView"
-        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/r_confirmPasswordTextView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/r_emailTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Confirm password"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_editTextTextPassword" />
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Please Enter Your Email"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/r_editTextTextEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/r_firstNameTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Please Enter Your First Name"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r_emailTextField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/r_editTextTextFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/r_lastNameTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Please Enter Your Last Name"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r_firstNameTextField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/r_editTextTextLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/r_passwordTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Set Password"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r_radioGroupGender">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
+            android:id="@+id/r_editTextTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/r_confirmPasswordTextField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Confirm Password"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r_passwordTextField">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
+            android:id="@+id/r_editTextTextConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/r_identityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
         android:text="Identity"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_editTextTextConfirmPassword" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r_confirmPasswordTextField" />
 
     <TextView
         android:id="@+id/r_genderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
         android:text="Gender"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_editTextTextLastName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r_lastNameTextField" />
 
     <RadioGroup
         android:id="@+id/r_radioGroupIdentity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
+        app:layout_constraintStart_toStartOf="@+id/r_emailTextField"
         app:layout_constraintTop_toBottomOf="@+id/r_identityTextView">
 
         <RadioButton
@@ -130,67 +198,4 @@
             tools:layout_editor_absoluteY="558dp" />
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/r_editTextTextConfirmPassword"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/r_editTextTextEmailAddress"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_confirmPasswordTextView"
-        tools:ignore="LabelFor,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/r_lastNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Last name"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_editTextTextFirstName" />
-
-    <EditText
-        android:id="@+id/r_editTextTextPassword"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:autofillHints="password"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/r_editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_passwordTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/r_passwordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Password"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_radioGroupGender" />
-
-    <TextView
-        android:id="@+id/r_firstNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="First name"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_editTextTextEmailAddress" />
-
-    <EditText
-        android:id="@+id/r_editTextTextFirstName"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:autofillHints="name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/r_editTextTextEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/r_emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/r_firstNameTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
