@@ -14,9 +14,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Presenter {
     private MainActivity view;
+    private FirebaseDatabase db;
 
     public Presenter(MainActivity view){
         this.view = view;
+        db = FirebaseDatabase.getInstance();
+    }
+
+    public Presenter(MainActivity view, FirebaseDatabase db){
+        this.view = view;
+        this.db = db;
     }
 
     public void successfullyLogin(String email)
@@ -36,8 +43,7 @@ public class Presenter {
             this.view.showMessage("The input format is wrong!");
             return;
         }
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
-                .child("Users").child(User.getID(email));
+        DatabaseReference ref = db.getReference().child("Users").child(User.getID(email));
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
