@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -34,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         passwordEdit = findViewById(R.id.m_editTextPassword);
 
         presenter = new Presenter(this);
+
+        SharedPreferences settings = getSharedPreferences("setting", 0);
+        String email = settings.getString("email", "");
+        if (!email.equals(""))
+            presenter.successfullyLogin(email);
     }
 
     public void showMessage(String message) {

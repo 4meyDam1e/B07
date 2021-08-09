@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -96,7 +97,7 @@ public class profileFragment extends dashboardFragment {
                                 p.setFirstName(firstname.getText().toString());
                                 p.setLastName(lastname.getText().toString());
                                 if (!password.getText().toString().equals(""))
-                                    p.setPassword(password.getText().toString());
+                                    p.setPassword(User.hashPassword(password.getText().toString()));
                                 p.setBirthday(birthday.getText().toString());
                                 p.setHealthCard(healthCard.getText().toString());
                                 ref.setValue(p, new DatabaseReference.CompletionListener() {
@@ -153,6 +154,8 @@ public class profileFragment extends dashboardFragment {
     }
 
     public void logout() {
+        SharedPreferences settings = getActivity().getSharedPreferences("setting", 0);
+        settings.edit().putString("email", "").commit();
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

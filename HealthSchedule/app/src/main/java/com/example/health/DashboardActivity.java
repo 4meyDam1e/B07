@@ -27,8 +27,8 @@ public class DashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy () {
+        if (dbRef != null && listener != null) dbRef.removeEventListener(listener);
         super.onDestroy();
-        dbRef.removeEventListener(listener);
     }
 
     @Override
@@ -48,6 +48,7 @@ public class DashboardActivity extends AppCompatActivity {
         dbRef.addValueEventListener(listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.getValue() == null) return;
                 if (snapshot.child("identity").getValue(String.class).equals("patient"))
                     updateUser(snapshot.getValue(Patient.class));
                 else

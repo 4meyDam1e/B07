@@ -1,6 +1,7 @@
 package com.example.health;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 
 import com.example.health.Classes.InputChecker;
@@ -20,6 +21,8 @@ public class Presenter {
 
     public void successfullyLogin(String email)
     {
+        SharedPreferences settings = view.getSharedPreferences("setting", 0);
+        settings.edit().putString("email", email).commit();
         Intent intent = new Intent(this.view, DashboardActivity.class);
         intent.putExtra("email", email);
         this.view.startActivity(intent);
@@ -39,7 +42,8 @@ public class Presenter {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() == null
-                        || !snapshot.child("password").getValue(String.class).equals(password))
+                        || !snapshot.child("password").getValue(Integer.class)
+                            .equals(User.hashPassword(password)))
                     view.showMessage("Incorrect Email or Password!");
                 else successfullyLogin(email);
             }

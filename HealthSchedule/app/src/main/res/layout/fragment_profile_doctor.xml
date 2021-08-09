@@ -29,7 +29,7 @@
                 android:id="@+id/p_SpecialistTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Proficiency"
+                android:text="Proficiency (use commas to separate)"
                 app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/p_editTextTextPassword" />
 
@@ -50,14 +50,11 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
                 android:text="Logout"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/p_buttonSignUp"
-                app:layout_constraintVertical_bias="0.057"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
@@ -65,15 +62,12 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="#f50057"
                 android:text="Delete Account"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
                 app:layout_constraintTop_toBottomOf="@+id/p_buttonLogout"
-                app:layout_constraintVertical_bias="1.0"
                 tools:ignore="UsingOnClickInXml,TextContrastCheck" />
 
             <EditText

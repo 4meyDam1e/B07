@@ -15,7 +15,7 @@ public class Patient extends User {
     }
 
     public Patient(String email, String firstName,
-                   String lastName, String gender, String password) {
+                   String lastName, String gender, int password) {
         info = new PatientInfo(email, firstName, lastName, gender, password);
         appointmentManager = new AppointmentManager();
     }

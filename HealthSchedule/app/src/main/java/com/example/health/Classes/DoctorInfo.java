@@ -11,7 +11,7 @@ public class DoctorInfo extends UserInfo {
     }
 
     public DoctorInfo(String email, String firstName, String lastName,
-                      String gender, String password) {
+                      String gender, int password) {
         super(email, firstName, lastName, gender, password);
         proficiency = "";
     }

@@ -28,7 +28,7 @@ public class Doctor extends User {
         schedule = new ArrayList<>();
     }
 
-    public Doctor(String email, String firstName, String lastName, String gender, String password) {
+    public Doctor(String email, String firstName, String lastName, String gender, int password) {
         info = new DoctorInfo(email, firstName, lastName, gender, password);
         appointmentManager = new AppointmentManager();
         schedule = new ArrayList<>();

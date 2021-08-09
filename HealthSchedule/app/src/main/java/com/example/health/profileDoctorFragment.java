@@ -3,6 +3,7 @@ package com.example.health;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.example.health.Classes.User;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.List;
 
 public class profileDoctorFragment extends dashboardFragment {
     Doctor d = (Doctor) tag;
@@ -70,7 +73,7 @@ public class profileDoctorFragment extends dashboardFragment {
                     return;
                 }
                 if (!InputChecker.checkProficiency(specialist.getText().toString())) {
-                    showMessage("Birthday format incorrect!");
+                    showMessage("Proficiency format incorrect!");
                     return;
                 }
                 if (!password.getText().toString().equals("") &&
@@ -88,8 +91,13 @@ public class profileDoctorFragment extends dashboardFragment {
                                 d.setFirstName(firstname.getText().toString());
                                 d.setLastName(lastname.getText().toString());
                                 if (!password.getText().toString().equals(""))
-                                    d.setPassword(password.getText().toString());
-                                d.setProficiency(specialist.getText().toString());
+                                    d.setPassword(User.hashPassword(password.getText().toString()));
+                                List<String> ps = Doctor.proficiencyList(specialist.getText().toString());
+                                String pro = "";
+                                for (String p : ps)
+                                    if (pro.equals("")) pro = p;
+                                    else pro = pro + "," + p;
+                                d.setProficiency(pro);
                                 ref.setValue(d, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(DatabaseError error,
@@ -121,15 +129,23 @@ public class profileDoctorFragment extends dashboardFragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                builder.setMessage("Are you sure to change the profile?")
+                builder.setMessage("Are you sure to delete the account?")
                         .setTitle("Message")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                                         .child("Users").child(User.getID(user.getEmail()));
-                                ref.removeValue();
-
-                                logout();
+                                ref.removeValue(new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(DatabaseError error,
+                                                           DatabaseReference ref) {
+                                        if (error == null) logout();
+                                        else {
+                                            System.out.println("Database Error: " +
+                                                    error.getCode());
+                                        }
+                                    }
+                                });
                             }
                         })
                         .setNegativeButton("Cancel", null);
@@ -139,6 +155,8 @@ public class profileDoctorFragment extends dashboardFragment {
     }
 
     public void logout() {
+        SharedPreferences settings = getActivity().getSharedPreferences("setting", 0);
+        settings.edit().putString("email", "").commit();
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

@@ -32,7 +32,6 @@ public class InputChecker {
     }
 
     public static boolean checkProficiency(String proficiency) {
-        if (proficiency.equals("")) return true;
         List<String> ps = Doctor.proficiencyList(proficiency);
         if (ps.size() == 0) return false;
         for (String p : ps)
