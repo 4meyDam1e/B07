@@ -15,33 +15,110 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/p_editTextTextSpecialist"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:ems="10"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_SpecialistTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/p_SpecialistTextView"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_firstNameTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Proficiency (use commas to separate)"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextPassword" />
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="24dp"
+                android:hint="First Name"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
+                    android:id="@+id/p_editTextTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_lastNameTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Last Name"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_firstNameTextField">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
+                    android:id="@+id/p_editTextTextLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_passwordTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Password"
+                app:endIconMode="password_toggle"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_lastNameTextField"
+                app:helperTextEnabled="true"
+                app:helperText="*Leave blank if you don't want to change">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="textPassword"
+                    android:id="@+id/p_editTextTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/p_proficiencyTextField"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:hint="Proficiency"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_passwordTextField"
+                app:helperTextEnabled="true"
+                app:helperText="*Use Commas To Separate">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
+                    android:id="@+id/p_editTextTextSpecialist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/p_buttonSignUp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
                 android:text="Save"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextSpecialist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/p_proficiencyTextField"
                 tools:ignore="UsingOnClickInXml" />
 
 
@@ -49,92 +126,31 @@
                 android:id="@+id/p_buttonLogout"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="Logout"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/p_buttonSignUp"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/p_buttonDeleteAccount"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:backgroundTint="#f50057"
                 android:text="Delete Account"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/p_buttonLogout"
                 tools:ignore="UsingOnClickInXml,TextContrastCheck" />
 
-            <EditText
-                android:id="@+id/p_editTextTextLastName"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:autofillHints="name"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_lastNameTextView"
-                tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
 
-            <TextView
-                android:id="@+id/p_lastNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Last name"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextFirstName" />
-
-            <EditText
-                android:id="@+id/p_editTextTextPassword"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:autofillHints="password"
-                android:ems="10"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/p_editTextTextFirstName"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_passwordTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <TextView
-                android:id="@+id/p_passwordTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Password (leave blank if not changed)"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_editTextTextLastName" />
-
-            <TextView
-                android:id="@+id/p_firstNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:text="First name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/p_editTextTextFirstName"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="24dp"
-                android:autofillHints="name"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/p_firstNameTextView"
-                app:layout_constraintTop_toBottomOf="@+id/p_firstNameTextView"
-                tools:ignore="SpeakableTextPresentCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

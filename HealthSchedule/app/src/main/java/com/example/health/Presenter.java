@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.health.Classes.InputChecker;
 import com.example.health.Classes.User;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,8 +40,14 @@ public class Presenter {
     public void attemptLogin() {
         String email = this.view.getEmail();
         String password = this.view.getPassword();
-        if (!InputChecker.checkEmail(email) || !InputChecker.checkPassword(password)) {
-            this.view.showMessage("The input format is wrong!");
+        view.getEmailLayout().setError(null);
+        view.getPasswordLayout().setError(null);
+        if (!InputChecker.checkEmail(email)) {
+            view.getEmailLayout().setError("Please Enter a Valid Email!");
+            return;
+        }
+        if (!InputChecker.checkPassword(password)) {
+            view.getPasswordLayout().setError("Please Enter a Valid Password!");
             return;
         }
         DatabaseReference ref = db.getReference().child("Users").child(User.getID(email));
@@ -49,9 +56,14 @@ public class Presenter {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() == null
                         || !snapshot.child("password").getValue(Integer.class)
-                            .equals(User.hashPassword(password)))
-                    view.showMessage("Incorrect Email or Password!");
-                else successfullyLogin(email);
+                            .equals(User.hashPassword(password))) {
+                    view.getEmailLayout().setError("Incorrect Email or Password!");
+                    view.getPasswordLayout().setError("Incorrect Email or Password!");
+                }
+
+                else {
+                    successfullyLogin(email);
+                }
             }
 
             @Override
@@ -61,7 +73,7 @@ public class Presenter {
         });
     }
 
-    public void openRegisterPage(View view) {
+    public void openRegisterPage() {
         Intent intent = new Intent(this.view, RegisterActivity.class);
         this.view.startActivity(intent);
     }
