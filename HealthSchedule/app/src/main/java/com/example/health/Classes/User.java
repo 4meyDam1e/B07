@@ -10,6 +10,10 @@ public abstract class User {
         return res;
     }
 
+    public static int hashPassword(String password) {
+        return password.hashCode() ^ 19260817;
+    }
+
     public abstract String getIdentity();
 
     public String getEmail() {
@@ -32,7 +36,7 @@ public abstract class User {
         return info.getGender();
     }
 
-    public String getPassword() { return info.getPassword(); }
+    public int getPassword() { return info.getPassword(); }
 
     public void setEmail(String email) {
         info.setEmail(email);
@@ -50,7 +54,7 @@ public abstract class User {
         info.setGender(gender);
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         info.setPassword(password);
     }
 }

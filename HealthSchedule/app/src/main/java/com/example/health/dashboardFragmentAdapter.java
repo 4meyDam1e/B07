@@ -18,9 +18,8 @@ public class dashboardFragmentAdapter extends FragmentStateAdapter {
         super(fragmentManager, lifecycle);
         fr = new dashboardFragment[count];
         if(role.equals("patient")) {
-
             fr[0] = new dashboardFirstFragment();
-            fr[1] = new profileFragment();
+            fr[1] = new newAppointmentFragment();
             fr[2] = new profileFragment();
         } else {
             fr[0] = new dashboardFirstFragment();

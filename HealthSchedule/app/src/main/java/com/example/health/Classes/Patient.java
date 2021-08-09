@@ -1,7 +1,10 @@
 package com.example.health.Classes;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Patient extends User {
     private AppointmentManager appointmentManager;
@@ -12,31 +15,23 @@ public class Patient extends User {
     }
 
     public Patient(String email, String firstName,
-                   String lastName, String gender, String password) {
+                   String lastName, String gender, int password) {
         info = new PatientInfo(email, firstName, lastName, gender, password);
         appointmentManager = new AppointmentManager();
-        /*addAppointment(new Appointment(2021, 8, 7, 13,
-                new DoctorInfo("demail@gmail.com",
-                        "Changhao",
-                        "Wang",
-                        "male",
-                        "123456"),
-                (PatientInfo) this.info));
-        addAppointment(new Appointment(2021, 8, 8, 13,
-                new DoctorInfo("demail@gmail.com",
-                        "Changhao",
-                        "Wang",
-                        "male",
-                        "123456"),
-                (PatientInfo) this.info));*/
     }
 
-    public List<DoctorInfo> previousDoctorList() {
-        List<DoctorInfo> res = new ArrayList<>();
+    public PatientInfo info() {
+        return (PatientInfo) info;
+    }
+
+    public List<String> previousDoctorList() {
+        List<String> res = new LinkedList<>();
+        TreeSet<String> h = new TreeSet<>();
         List<Appointment> appointments = appointmentList();
         for (Appointment a : appointments)
             if (a.done())
-                res.add(a.getDoctorInfo());
+                h.add(a.getDoctorInfo().name());
+        for (String s : h) res.add(s);
         return res;
     }
 

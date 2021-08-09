@@ -108,8 +108,9 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         User user;
-        if (patientRadio.isChecked()) user = new Patient(email, first, last, gender, password);
-        else user = new Doctor(email, first, last, gender, password);
+        if (patientRadio.isChecked())
+            user = new Patient(email, first, last, gender, User.hashPassword(password));
+        else user = new Doctor(email, first, last, gender, User.hashPassword(password));
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(User.getID(email));
         ref.addListenerForSingleValueEvent(new ValueEventListener() {

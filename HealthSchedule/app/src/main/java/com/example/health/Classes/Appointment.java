@@ -2,10 +2,23 @@ package com.example.health.Classes;
 
 import java.util.Date;
 
-public class Appointment {
+public class Appointment implements Comparable<Appointment> {
     private int year, month, day, time;
     private DoctorInfo doctorInfo;
     private PatientInfo patientInfo;
+
+    @Override
+    public int compareTo(Appointment a) {
+        if (year < a.year) return -1;
+        if (year > a.year) return 1;
+        if (month < a.month) return -1;
+        if (month > a.month) return 1;
+        if (day < a.day) return -1;
+        if (day > a.day) return 1;
+        if (time < a.time) return -1;
+        if (time > a.time) return 1;
+        return 0;
+    }
 
     public static String Convert24To12(int time) {
         String tmp;
@@ -42,7 +55,9 @@ public class Appointment {
     }
 
     public String dateToString() {
-        return year + "/" + month + "/" + day;
+        return String.format("%04d", year) + "/"
+                + String.format("%02d", month) + "/"
+                + String.format("%02d", day);
     }
 
     public String timeToString() {

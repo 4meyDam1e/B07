@@ -5,18 +5,18 @@ public abstract class UserInfo {
     private String firstName;
     private String lastName;
     private String gender;
-    private String password;
+    private int password; // hashed
 
     public UserInfo() {
         email = "";
         firstName = "";
         lastName = "";
         gender = "";
-        password = "";
+        password = 0;
     }
 
     public UserInfo(String email, String firstName, String lastName,
-                    String gender, String password){
+                    String gender, int password){
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -44,7 +44,7 @@ public abstract class UserInfo {
         return gender;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
@@ -64,7 +64,7 @@ public abstract class UserInfo {
         this.gender = gender;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 }

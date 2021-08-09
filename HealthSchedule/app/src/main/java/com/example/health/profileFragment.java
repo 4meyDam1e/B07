@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -27,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.w3c.dom.Text;
 
 public class profileFragment extends dashboardFragment {
-    User tag;
     Patient p = (Patient)tag;
 
     private EditText firstname;
@@ -55,7 +55,7 @@ public class profileFragment extends dashboardFragment {
         initialState();
         firstname.setText(p.getFirstName());
         lastname.setText(p.getLastName());
-        birthday.setText(p.getBirthday());
+        if (!p.getBirthday().equals("")) birthday.setText(p.getBirthday());
         healthCard.setText(p.getHealthCard());
     }
 
@@ -97,7 +97,7 @@ public class profileFragment extends dashboardFragment {
                                 p.setFirstName(firstname.getText().toString());
                                 p.setLastName(lastname.getText().toString());
                                 if (!password.getText().toString().equals(""))
-                                    p.setPassword(password.getText().toString());
+                                    p.setPassword(User.hashPassword(password.getText().toString()));
                                 p.setBirthday(birthday.getText().toString());
                                 p.setHealthCard(healthCard.getText().toString());
                                 ref.setValue(p, new DatabaseReference.CompletionListener() {
@@ -105,6 +105,7 @@ public class profileFragment extends dashboardFragment {
                                     public void onComplete(DatabaseError error,
                                                            DatabaseReference ref) {
                                         if (error == null) {
+                                            password.setText("");
                                             showMessage("Success!");
                                         }
                                         else {
@@ -153,6 +154,8 @@ public class profileFragment extends dashboardFragment {
     }
 
     public void logout() {
+        SharedPreferences settings = getActivity().getSharedPreferences("setting", 0);
+        settings.edit().putString("email", "").commit();
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();

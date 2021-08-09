@@ -22,6 +22,14 @@ public class DashboardActivity extends AppCompatActivity {
     ViewPager2 pager2;
     TabLayout tabLayout;
     FragmentManager fm;
+    ValueEventListener listener;
+    DatabaseReference dbRef;
+
+    @Override
+    protected void onDestroy () {
+        if (dbRef != null && listener != null) dbRef.removeEventListener(listener);
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +43,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+        dbRef = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(User.getID(email));
-        ref.addValueEventListener(new ValueEventListener() {
+        dbRef.addValueEventListener(listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.getValue() == null) return;
                 if (snapshot.child("identity").getValue(String.class).equals("patient"))
                     updateUser(snapshot.getValue(Patient.class));
                 else

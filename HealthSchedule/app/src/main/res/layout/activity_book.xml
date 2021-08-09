@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bookActivity">
+
+    <Button
+        android:id="@+id/b_buttonDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:onClick="showDatePicker"
+        android:text="Select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewDate" />
+
+    <TextView
+        android:id="@+id/b_textViewShowProficiency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Proficiency"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewProficiency" />
+
+    <TextView
+        android:id="@+id/b_textViewShowDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="1900/01/01"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewDate" />
+
+    <TextView
+        android:id="@+id/b_textViewGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/b_textViewShowGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="male"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewGender" />
+
+    <TextView
+        android:id="@+id/b_textViewProficiency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Proficiency"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewShowGender" />
+
+    <TextView
+        android:id="@+id/b_textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Appointment Date (yyyy/mm/dd)"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewShowProficiency" />
+
+    <TextView
+        android:id="@+id/b_textViewDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Available Timeslots (select one to book)"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewShowDate" />
+
+    <ListView
+        android:id="@+id/b_listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/b_buttonDate"
+        app:layout_constraintStart_toStartOf="@+id/b_textViewGender"
+        app:layout_constraintTop_toBottomOf="@+id/b_textViewDate2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

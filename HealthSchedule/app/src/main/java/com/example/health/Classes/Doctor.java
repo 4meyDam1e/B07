@@ -1,6 +1,7 @@
 package com.example.health.Classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -9,32 +10,32 @@ public class Doctor extends User {
     private AppointmentManager appointmentManager;
     private List<Integer> schedule;
 
+    public static List<String> proficiencyList(String s) {
+        List<String> tmp = new ArrayList<String>(Arrays.asList(s.split(",")));
+        if (tmp.size() == 0) return tmp;
+        Collections.sort(tmp);
+        List<String> res = new ArrayList<String>();
+        res.add(tmp.get(0).trim());
+        for (int i = 1; i < tmp.size(); i += 1)
+            if (!tmp.get(i - 1).trim().equals(tmp.get(i).trim()))
+                res.add(tmp.get(i).trim());
+        return res;
+    }
+
     public Doctor() {
         info = new DoctorInfo();
         appointmentManager = new AppointmentManager();
         schedule = new ArrayList<>();
     }
 
-    public Doctor(String email, String firstName, String lastName, String gender, String password) {
+    public Doctor(String email, String firstName, String lastName, String gender, int password) {
         info = new DoctorInfo(email, firstName, lastName, gender, password);
         appointmentManager = new AppointmentManager();
         schedule = new ArrayList<>();
-        addAppointment(new Appointment(2021, 8, 7, 13,
-                (DoctorInfo) this.info,
-                new PatientInfo("demail@gmail.com",
-                        "Changhao",
-                        "Wang",
-                        "male",
-                        "123456")
-                ));
-        addAppointment(new Appointment(2021, 8, 8, 13,
-                (DoctorInfo) this.info,
-                new PatientInfo("demail@gmail.com",
-                        "Changhao",
-                        "Wang",
-                        "male",
-                        "123456")
-        ));
+    }
+
+    public DoctorInfo info() {
+        return (DoctorInfo) info;
     }
 
     public List<Appointment> appointmentList() { return appointmentManager.appointmentList(); }

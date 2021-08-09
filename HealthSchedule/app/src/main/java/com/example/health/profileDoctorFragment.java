@@ -3,6 +3,7 @@ package com.example.health;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,22 +14,23 @@ import android.widget.TextView;
 
 import com.example.health.Classes.Doctor;
 import com.example.health.Classes.InputChecker;
-import com.example.health.Classes.Patient;
 import com.example.health.Classes.User;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.List;
+
 public class profileDoctorFragment extends dashboardFragment {
-    User tag;
     Doctor d = (Doctor) tag;
 
     private EditText firstname;
     private EditText lastname;
     private EditText password;
     private TextView specialist;
-    private Button btn;
+    private Button btn_signup;
     private Button btn_logout;
+    private Button btn_delete_account;
 
 
     //private EditText specialist;
@@ -47,19 +49,19 @@ public class profileDoctorFragment extends dashboardFragment {
     public void update(User user) {
         if (view == null) { tag = user; return; }
         d = (Doctor) user;
-        initialState();
+        initialState(user);
         firstname.setText(d.getFirstName());
         lastname.setText(d.getLastName());
         specialist.setText(d.getProficiency());
     }
 
-    public void initialState() {
+    public void initialState(User user) {
         firstname = view.findViewById(R.id.p_editTextTextFirstName);
         lastname = view.findViewById(R.id.p_editTextTextLastName);
         password = view.findViewById(R.id.p_editTextTextPassword);
         specialist = view.findViewById(R.id.p_editTextTextSpecialist);
-        btn = view.findViewById(R.id.p_buttonSignUp);
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn_signup = view.findViewById(R.id.p_buttonSignUp);
+        btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!InputChecker.checkName(firstname.getText().toString())) {
@@ -71,7 +73,7 @@ public class profileDoctorFragment extends dashboardFragment {
                     return;
                 }
                 if (!InputChecker.checkProficiency(specialist.getText().toString())) {
-                    showMessage("Birthday format incorrect!");
+                    showMessage("Proficiency format incorrect!");
                     return;
                 }
                 if (!password.getText().toString().equals("") &&
@@ -89,13 +91,19 @@ public class profileDoctorFragment extends dashboardFragment {
                                 d.setFirstName(firstname.getText().toString());
                                 d.setLastName(lastname.getText().toString());
                                 if (!password.getText().toString().equals(""))
-                                    d.setPassword(password.getText().toString());
-                                d.setProficiency(specialist.getText().toString());
+                                    d.setPassword(User.hashPassword(password.getText().toString()));
+                                List<String> ps = Doctor.proficiencyList(specialist.getText().toString());
+                                String pro = "";
+                                for (String p : ps)
+                                    if (pro.equals("")) pro = p;
+                                    else pro = pro + "," + p;
+                                d.setProficiency(pro);
                                 ref.setValue(d, new DatabaseReference.CompletionListener() {
                                     @Override
                                     public void onComplete(DatabaseError error,
                                                            DatabaseReference ref) {
                                         if (error == null) {
+                                            password.setText("");
                                             showMessage("Success!");
                                         }
                                         else {
@@ -116,9 +124,39 @@ public class profileDoctorFragment extends dashboardFragment {
                 logout();
             }
         });
+        btn_delete_account = view.findViewById(R.id.p_buttonDeleteAccount);
+        btn_delete_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Are you sure to delete the account?")
+                        .setTitle("Message")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                                        .child("Users").child(User.getID(user.getEmail()));
+                                ref.removeValue(new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(DatabaseError error,
+                                                           DatabaseReference ref) {
+                                        if (error == null) logout();
+                                        else {
+                                            System.out.println("Database Error: " +
+                                                    error.getCode());
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("Cancel", null);
+                builder.create().show();
+            }
+        });
     }
 
     public void logout() {
+        SharedPreferences settings = getActivity().getSharedPreferences("setting", 0);
+        settings.edit().putString("email", "").commit();
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
