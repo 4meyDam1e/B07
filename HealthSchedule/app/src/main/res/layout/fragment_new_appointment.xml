@@ -51,23 +51,33 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/na_buttonProficiencyList"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:text="Button"
+            android:text="Show All Proficiency"
             app:layout_constraintEnd_toEndOf="@+id/na_editTextProficiency"
             app:layout_constraintStart_toStartOf="@+id/na_textViewGender"
             app:layout_constraintTop_toBottomOf="@+id/na_spinner" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/na_buttonSearch"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:text="Button"
+            android:text="Search"
             app:layout_constraintEnd_toEndOf="@+id/na_editTextProficiency"
             app:layout_constraintStart_toStartOf="@+id/na_textViewGender"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/na_buttonProficiencyList" />
+
+        <ListView
+            android:id="@+id/na_listView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/na_editTextProficiency"
+            app:layout_constraintStart_toStartOf="@+id/na_textViewGender"
+            app:layout_constraintTop_toBottomOf="@+id/na_buttonSearch" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
