@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Database read failed: " + error.getCode());
             }
         });
-    }
+    }*/
 
     public void openRegisterPage(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-    }*/
+    }
 }

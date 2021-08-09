@@ -54,7 +54,7 @@ public class profileFragment extends dashboardFragment {
         initialState();
         firstname.setText(p.getFirstName());
         lastname.setText(p.getLastName());
-        birthday.setText(p.getBirthday());
+        if (!p.getBirthday().equals("")) birthday.setText(p.getBirthday());
         healthCard.setText(p.getHealthCard());
     }
 
@@ -104,6 +104,7 @@ public class profileFragment extends dashboardFragment {
                                     public void onComplete(DatabaseError error,
                                                            DatabaseReference ref) {
                                         if (error == null) {
+                                            password.setText("");
                                             showMessage("Success!");
                                         }
                                         else {

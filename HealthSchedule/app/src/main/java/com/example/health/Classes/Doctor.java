@@ -32,22 +32,10 @@ public class Doctor extends User {
         info = new DoctorInfo(email, firstName, lastName, gender, password);
         appointmentManager = new AppointmentManager();
         schedule = new ArrayList<>();
-        addAppointment(new Appointment(2021, 8, 7, 13,
-                (DoctorInfo) this.info,
-                new PatientInfo("demail@gmail.com",
-                        "Changhao",
-                        "Wang",
-                        "male",
-                        "123456")
-                ));
-        addAppointment(new Appointment(2021, 8, 8, 13,
-                (DoctorInfo) this.info,
-                new PatientInfo("demail@gmail.com",
-                        "Changhao",
-                        "Wang",
-                        "male",
-                        "123456")
-        ));
+    }
+
+    public DoctorInfo info() {
+        return (DoctorInfo) info;
     }
 
     public List<Appointment> appointmentList() { return appointmentManager.appointmentList(); }

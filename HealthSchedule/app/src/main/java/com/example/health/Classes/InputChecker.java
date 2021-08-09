@@ -32,7 +32,7 @@ public class InputChecker {
     }
 
     public static boolean checkProficiency(String proficiency) {
-        if (proficiency == "") return true;
+        if (proficiency.equals("")) return true;
         List<String> ps = Doctor.proficiencyList(proficiency);
         if (ps.size() == 0) return false;
         for (String p : ps)
@@ -42,7 +42,6 @@ public class InputChecker {
     }
 
     public static boolean checkSingleProficiency(String proficiency) {
-        if (proficiency.length() < 2) return false;
         Pattern proficiencyPattern = Pattern.compile("\\w+\\s?\\w+");
         Matcher proficiencyMatcher = proficiencyPattern.matcher(proficiency);
         return proficiencyMatcher.matches();

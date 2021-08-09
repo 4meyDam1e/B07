@@ -24,9 +24,9 @@
             android:id="@+id/na_textViewProficiency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proficiency"
+            android:layout_marginEnd="24dp"
+            android:text="Proficiency (leave blank if no limit)"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/na_textViewGender" />
 
         <EditText
@@ -77,6 +77,15 @@
             android:layout_marginTop="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/na_editTextProficiency"
+            app:layout_constraintStart_toStartOf="@+id/na_textViewGender"
+            app:layout_constraintTop_toBottomOf="@+id/na_textViewList" />
+
+        <TextView
+            android:id="@+id/na_textViewList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Doctor List (select one to make appointments)"
             app:layout_constraintStart_toStartOf="@+id/na_textViewGender"
             app:layout_constraintTop_toBottomOf="@+id/na_buttonSearch" />
     </androidx.constraintlayout.widget.ConstraintLayout>

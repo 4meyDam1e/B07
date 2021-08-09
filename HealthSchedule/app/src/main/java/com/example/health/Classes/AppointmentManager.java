@@ -1,9 +1,10 @@
 package com.example.health.Classes;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class AppointmentManager {
     private Map<String, Map<String, Appointment>> appointments;
@@ -17,7 +18,7 @@ public class AppointmentManager {
     }
 
     public AppointmentManager() {
-        appointments = new TreeMap<>();
+        appointments = new HashMap<>();
     }
 
     public List<Appointment> appointmentList() {
@@ -25,6 +26,7 @@ public class AppointmentManager {
         for (Map.Entry<String, Map<String, Appointment> > i : appointments.entrySet())
             for (Map.Entry<String, Appointment> j : i.getValue().entrySet())
                 res.add(j.getValue());
+        Collections.sort(res);
         return res;
     }
 
@@ -32,7 +34,7 @@ public class AppointmentManager {
         String dc = dateCode(appointment.getYear(), appointment.getMonth(), appointment.getDay());
         String tc = timeCode(appointment.getTime());
         if (!appointments.containsKey(dc))
-            appointments.put(dc, new TreeMap<>());
+            appointments.put(dc, new HashMap<>());
         appointments.get(dc).put(tc, appointment);
     }
 

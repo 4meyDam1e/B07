@@ -87,11 +87,11 @@ public class dashboardFirstFragment extends dashboardFragment {
                                         + "Birthday: " + p.getBirthday() + "\n"
                                         + "Health Card: " + p.getHealthCard() + "\n"
                                         + "Previous Doctor list:\n";
-                                List<DoctorInfo> dl = p.previousDoctorList();
+                                List<String> dl = p.previousDoctorList();
                                 for (int i = 0; i < dl.size() - 1; i += 1)
-                                    msg = msg + dl.get(i).name() + ", ";
+                                    msg = msg + dl.get(i) + ", ";
                                 if (dl.size() > 0)
-                                    msg = msg + dl.get(dl.size() - 1).name();
+                                    msg = msg + dl.get(dl.size() - 1);
                                 showMessage(msg);
                             }
                         }

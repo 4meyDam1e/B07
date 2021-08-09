@@ -95,6 +95,7 @@ public class profileDoctorFragment extends dashboardFragment {
                                     public void onComplete(DatabaseError error,
                                                            DatabaseReference ref) {
                                         if (error == null) {
+                                            password.setText("");
                                             showMessage("Success!");
                                         }
                                         else {
