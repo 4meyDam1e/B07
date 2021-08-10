@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.health.Classes.Doctor;
 import com.example.health.Classes.InputChecker;
 import com.example.health.Classes.User;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,6 +32,10 @@ public class profileDoctorFragment extends dashboardFragment {
     private Button btn_signup;
     private Button btn_logout;
     private Button btn_delete_account;
+    private TextInputLayout firstnameLayout;
+    private TextInputLayout lastnameLayout;
+    private TextInputLayout passwordLayout;
+    private TextInputLayout proficiencyLayout;
 
 
     //private EditText specialist;
@@ -61,24 +66,32 @@ public class profileDoctorFragment extends dashboardFragment {
         password = view.findViewById(R.id.p_editTextTextPassword);
         specialist = view.findViewById(R.id.p_editTextTextSpecialist);
         btn_signup = view.findViewById(R.id.p_buttonSignUp);
+        firstnameLayout = view.findViewById(R.id.p_firstNameTextField);
+        lastnameLayout = view.findViewById(R.id.p_lastNameTextField);
+        passwordLayout = view.findViewById(R.id.p_passwordTextField);
+        proficiencyLayout = view.findViewById(R.id.p_proficiencyTextField);
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                firstnameLayout.setError(null);
+                lastnameLayout.setError(null);
+                proficiencyLayout.setError(null);
+                passwordLayout.setError(null);
                 if (!InputChecker.checkName(firstname.getText().toString())) {
-                    showMessage("First name format incorrect!");
+                    firstnameLayout.setError("First name format incorrect!");
                     return;
                 }
                 if (!InputChecker.checkName(lastname.getText().toString())) {
-                    showMessage("Last name format incorrect!");
+                    lastnameLayout.setError("Last name format incorrect!");
                     return;
                 }
                 if (!InputChecker.checkProficiency(specialist.getText().toString())) {
-                    showMessage("Proficiency format incorrect!");
+                    passwordLayout.setError("Proficiency format incorrect!");
                     return;
                 }
                 if (!password.getText().toString().equals("") &&
                         !InputChecker.checkPassword(password.getText().toString())) {
-                    showMessage("Password format incorrect!");
+                    proficiencyLayout.setError("Password format incorrect!");
                     return;
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
