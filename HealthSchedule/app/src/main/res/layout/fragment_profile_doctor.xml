@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:hint="First Name"
                 app:errorEnabled="true"
@@ -30,10 +30,10 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
                     android:id="@+id/p_editTextTextFirstName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -43,7 +43,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:hint="Last Name"
                 app:errorEnabled="true"
@@ -52,10 +51,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/p_firstNameTextField">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
                     android:id="@+id/p_editTextTextLastName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,22 +64,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:hint="Password"
                 app:endIconMode="password_toggle"
                 app:errorEnabled="true"
+                app:helperText="* Leave it blank if you don't want to change"
+                app:helperTextEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p_lastNameTextField"
-                app:helperTextEnabled="true"
-                app:helperText="*Leave blank if you don't want to change">
+                app:layout_constraintTop_toBottomOf="@+id/p_lastNameTextField">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:inputType="textPassword"
                     android:id="@+id/p_editTextTextPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,31 +88,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:hint="Proficiency"
                 app:errorEnabled="true"
+                app:helperText="* Use Commas To Separate"
+                app:helperTextEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/p_passwordTextField"
-                app:helperTextEnabled="true"
-                app:helperText="*Use Commas To Separate">
+                app:layout_constraintTop_toBottomOf="@+id/p_passwordTextField">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck"
                     android:id="@+id/p_editTextTextSpecialist"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonSignUp"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:text="Save"
                 app:layout_constraintEnd_toEndOf="parent"

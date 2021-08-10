@@ -45,11 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        app:errorEnabled="true"
         android:hint="Password"
         app:endIconMode="password_toggle"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="@+id/m_imageViewLogo"
         app:layout_constraintStart_toStartOf="@+id/m_imageViewLogo"
         app:layout_constraintTop_toBottomOf="@+id/emailTextField">
@@ -63,16 +62,15 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        style="?attr/materialButtonOutlinedStyle"
         android:id="@+id/m_buttonLogin"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
         android:onClick="handleLogin"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="@+id/m_imageViewLogo"
         app:layout_constraintStart_toStartOf="@+id/m_imageViewLogo"
-        app:layout_constraintTop_toBottomOf="@+id/passwordTextField"/>
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextField" />
 
     <Button
         android:id="@+id/m_buttonRegister"
