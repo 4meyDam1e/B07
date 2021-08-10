@@ -13,6 +13,7 @@ import com.example.health.Classes.Doctor;
 import com.example.health.Classes.InputChecker;
 import com.example.health.Classes.Patient;
 import com.example.health.Classes.User;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,13 +21,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText emailEdit;
-    EditText firstNameEdit;
-    EditText lastNameEdit;
-    RadioButton maleRadio;
-    EditText passwordEdit;
-    EditText confirmPasswordEdit;
-    RadioButton patientRadio;
+    private EditText emailEdit;
+    private EditText firstNameEdit;
+    private EditText lastNameEdit;
+    private RadioButton maleRadio;
+    private EditText passwordEdit;
+    private EditText confirmPasswordEdit;
+    private RadioButton patientRadio;
+    private TextInputLayout emailLayout;
+    private TextInputLayout firstnameLayout;
+    private TextInputLayout lastnameLayout;
+    private TextInputLayout passwordLayout;
+    private TextInputLayout confirmPasswordLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +47,11 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEdit = findViewById(R.id.r_editTextTextPassword);
         confirmPasswordEdit = findViewById(R.id.r_editTextTextConfirmPassword);
         patientRadio = findViewById(R.id.r_radioButtonPatient);
+        emailLayout = findViewById(R.id.r_emailTextField);
+        firstnameLayout = findViewById(R.id.r_firstNameTextField);
+        lastnameLayout = findViewById(R.id.r_lastNameTextField);
+        passwordLayout = findViewById(R.id.r_passwordTextField);
+        confirmPasswordLayout = findViewById(R.id.r_confirmPasswordTextField);
     }
 
     public void showMessage(String message) {
@@ -80,6 +92,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void submitRequest(View view)
     {
+        emailLayout.setError(null);
+        firstnameLayout.setError(null);
+        lastnameLayout.setError(null);
+        passwordLayout.setError(null);
+        confirmPasswordLayout.setError(null);
         String email = emailEdit.getText().toString();
         String first = firstNameEdit.getText().toString();
         String last = lastNameEdit.getText().toString();
@@ -88,23 +105,23 @@ public class RegisterActivity extends AppCompatActivity {
         String password = passwordEdit.getText().toString();
         String c_password = confirmPasswordEdit.getText().toString();
         if (!InputChecker.checkEmail(email)) {
-            showMessage("Email format incorrect!");
+            emailLayout.setError("Email format incorrect!");
             return;
         }
         if (!InputChecker.checkName(first)) {
-            showMessage("First name format incorrect!");
+            firstnameLayout.setError("First name format incorrect!");
             return;
         }
         if (!InputChecker.checkName(last)) {
-            showMessage("Last name format incorrect!");
+            lastnameLayout.setError("Last name format incorrect!");
             return;
         }
         if (!InputChecker.checkPassword(password)) {
-            showMessage("Password format incorrect!");
+            passwordLayout.setError("Password format incorrect!");
             return;
         }
         if (!password.equals(c_password)) {
-            showMessage("The two passwords entered do not match!");
+            confirmPasswordLayout.setError("The two passwords entered do not match!");
             return;
         }
         User user;
@@ -118,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.getValue() == null)
                     registerNewUser(user);
-                else showMessage("User already exists!");
+                else emailLayout.setError("User already exists!");
             }
 
             @Override

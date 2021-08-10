@@ -21,6 +21,7 @@ import androidx.annotation.RequiresApi;
 import com.example.health.Classes.InputChecker;
 import com.example.health.Classes.Patient;
 import com.example.health.Classes.User;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,6 +39,10 @@ public class profileFragment extends dashboardFragment {
     private Button btn;
     private Button btn_logout;
     private Button btn_birthday;
+    private TextInputLayout firstnameLayout;
+    private com.google.android.material.textfield.TextInputLayout lastnameLayout;
+    private TextInputLayout passwordLayout;
+    private TextInputLayout healthcardLayout;
 
     public profileFragment() {
         // Required empty public constructor
@@ -65,25 +70,33 @@ public class profileFragment extends dashboardFragment {
         birthday = view.findViewById(R.id.p_textViewShowBirthday);
         password = view.findViewById(R.id.p_editTextTextPassword);
         healthCard = view.findViewById(R.id.p_editTextTextHealthcard);
+        firstnameLayout = view.findViewById(R.id.p_firstNameTextField);
+        lastnameLayout = view.findViewById(R.id.p_lastNameTextField);
+        passwordLayout = view.findViewById(R.id.p_passwordTextField);
+        healthcardLayout = view.findViewById(R.id.p_healthCardTextField);
         btn = view.findViewById(R.id.p_buttonSignUp);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                firstnameLayout.setError(null);
+                lastnameLayout.setError(null);
+                healthcardLayout.setError(null);
+                passwordLayout.setError(null);
                 if (!InputChecker.checkName(firstname.getText().toString())) {
-                    showMessage("First name format incorrect!");
+                    firstnameLayout.setError("First name format incorrect!");
                     return;
                 }
                 if (!InputChecker.checkName(lastname.getText().toString())) {
-                    showMessage("Last name format incorrect!");
+                    lastnameLayout.setError("Last name format incorrect!");
                     return;
                 }
                 if (!InputChecker.checkHealthCard(healthCard.getText().toString())) {
-                    showMessage("Health Card format incorrect!");
+                    healthcardLayout.setError("Health Card format incorrect!");
                     return;
                 }
                 if (!password.getText().toString().equals("") &&
                         !InputChecker.checkPassword(password.getText().toString())) {
-                    showMessage("Password format incorrect!");
+                    passwordLayout.setError("Password format incorrect!");
                     return;
                 }
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
