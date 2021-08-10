@@ -7,6 +7,7 @@
     tools:context=".bookActivity">
 
     <Button
+        style="?attr/materialButtonOutlinedStyle"
         android:id="@+id/b_buttonDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
