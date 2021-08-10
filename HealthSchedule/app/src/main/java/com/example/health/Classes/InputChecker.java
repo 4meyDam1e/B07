@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class InputChecker {
     public static boolean checkEmail(String email) {
-        Pattern emailPattern = Pattern.compile("^\\s*\\w+(?:\\.{0,1}[\\w-]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\\.[a-zA-Z]+\\s*$");
+        Pattern emailPattern = Pattern.compile("([0-9a-zA-Z](_|\\.)?)*[0-9a-zA-Z]@([0-9a-zA-Z]+\\.)+[0-9a-zA-Z]+");
         Matcher emailMatcher = emailPattern.matcher(email);
         return emailMatcher.matches();
     }
@@ -20,7 +20,7 @@ public class InputChecker {
 
     public static boolean checkName(String name) {
         if(name.length() > 50) return false;
-        Pattern namePattern = Pattern.compile("[A-Z]([a-z])*");
+        Pattern namePattern = Pattern.compile("[a-zA-Z]+");
         Matcher nameMatcher = namePattern.matcher(name);
         return nameMatcher.matches();
     }
@@ -41,7 +41,7 @@ public class InputChecker {
     }
 
     public static boolean checkSingleProficiency(String proficiency) {
-        Pattern proficiencyPattern = Pattern.compile("\\w+\\s?\\w+");
+        Pattern proficiencyPattern = Pattern.compile("(\\w+\\s?)*\\w+");
         Matcher proficiencyMatcher = proficiencyPattern.matcher(proficiency);
         return proficiencyMatcher.matches();
     }

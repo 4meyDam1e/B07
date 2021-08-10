@@ -127,12 +127,19 @@ public class bookActivity extends AppCompatActivity {
                                                 android.R.layout.simple_list_item_1);
         List<Integer> schedule = doctor.getSchedule();
         timeList = new ArrayList<>();
-        for (int t : schedule)
+        Date date = new Date(System.currentTimeMillis());
+        for (int t : schedule) {
+            if (date.getYear() + 1900 == sYear
+                    && date.getMonth() + 1 == sMonth
+                    && date.getDate() == sDay
+                    && t < date.getHours())
+                continue;
             if (doctor.getAppointment(sYear, sMonth, sDay, t) == null) {
                 adapter.add(Appointment.Convert24To12(t) + " - "
                         + Appointment.Convert24To12(t + 1));
                 timeList.add(t);
             }
+        }
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

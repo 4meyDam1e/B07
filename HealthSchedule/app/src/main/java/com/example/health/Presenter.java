@@ -54,16 +54,13 @@ public class Presenter {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() == null
-                        || !snapshot.child("password").getValue(Integer.class)
-                            .equals(User.hashPassword(password))) {
-                    view.getEmailLayout().setError("Incorrect Email or Password!");
-                    view.getPasswordLayout().setError("Incorrect Email or Password!");
-                }
-
-                else {
+                if (snapshot.getValue() == null)
+                    view.getEmailLayout().setError("User doesn't exist!");
+                else if (!snapshot.child("password").getValue(Integer.class)
+                            .equals(User.hashPassword(password)))
+                    view.getPasswordLayout().setError("Password incorrect!");
+                else
                     successfullyLogin(email);
-                }
             }
 
             @Override
