@@ -109,6 +109,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonSignUp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -123,6 +124,7 @@
 
 
             <Button
+                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonLogout"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -136,6 +138,7 @@
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
+                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonDeleteAccount"
                 android:layout_width="0dp"
                 android:layout_height="50dp"

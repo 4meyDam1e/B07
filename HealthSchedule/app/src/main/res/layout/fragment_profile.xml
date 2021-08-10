@@ -118,6 +118,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/p_passwordTextField" />
 
             <Button
+                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonSignUp"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -131,6 +132,7 @@
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
+                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonLogout"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
@@ -155,6 +157,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/p_birthdayTextView" />
 
             <Button
+                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/p_buttonBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

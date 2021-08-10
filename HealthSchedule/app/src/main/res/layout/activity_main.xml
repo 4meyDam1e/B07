@@ -63,6 +63,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        style="?attr/materialButtonOutlinedStyle"
         android:id="@+id/m_buttonLogin"
         android:layout_width="0dp"
         android:layout_height="50dp"
