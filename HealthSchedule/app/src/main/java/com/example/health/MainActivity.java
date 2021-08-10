@@ -24,7 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
     private EditText emailEdit;
     private EditText passwordEdit;
-    private Presenter presenter;
+    private MainPresenter presenter;
+    private TextInputLayout emailLayout;
+    private TextInputLayout passwordLayout;
 
 
     @Override
@@ -34,40 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         emailEdit = findViewById(R.id.m_editTextEmail);
         passwordEdit = findViewById(R.id.m_editTextPassword);
-        presenter = new Presenter(this);
+        presenter = new MainPresenter(this);
+        emailLayout = findViewById(R.id.emailTextField);
+        passwordLayout = findViewById(R.id.passwordTextField);
 
-        SharedPreferences settings = getSharedPreferences("setting", 0);
-        String email = settings.getString("email", "");
-        if (!email.equals(""))
-            presenter.successfullyLogin(email);
+        presenter.checkLoginRecord();
     }
-
-//    public void showMessage(String message) {
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setMessage(message)
-//                .setTitle("Message")
-//                .setPositiveButton("OK", null);
-//        builder.create().show();
-//    }
-
-//    public void successfullyLogin(String email)
-//    {
-//        Intent intent = new Intent(this, DashboardActivity.class);
-//        intent.putExtra("email", email);
-//        startActivity(intent);
-//        finish();
-//    }
 
     public String getEmail(){
         return emailEdit.getText().toString();
-    }
-
-    public TextInputLayout getEmailLayout() {
-        return findViewById(R.id.emailTextField);
-    }
-
-    public TextInputLayout getPasswordLayout() {
-        return findViewById(R.id.passwordTextField);
     }
 
     public String getPassword(){
@@ -82,36 +59,11 @@ public class MainActivity extends AppCompatActivity {
         presenter.openRegisterPage();
     }
 
-//    public void attemptLogin(View view) {
-//        String email = emailEdit.getText().toString();
-//        String password = passwordEdit.getText().toString();
-//        if (!InputChecker.checkEmail(email) || !InputChecker.checkPassword(password)) {
-//            showMessage("The input format is wrong!");
-//            return;
-//        }
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
-//                                .child("Users").child(User.getID(email));
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//                if (snapshot.getValue() == null
-//                        || !snapshot.child("password").getValue(String.class).equals(password)) {
-//                    TextInputLayout emailLayout = findViewById(R.id.emailTextField);
-//                    emailLayout.error = "";
-//                }
-//                    //showMessage("Incorrect Email or Password!");
-//                else successfullyLogin(email);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                System.out.println("Database read failed: " + error.getCode());
-//            }
-//        });
-//    }
+    public void setEmailLayoutError(String s) {
+        emailLayout.setError(s);
+    }
 
-//    public void openRegisterPage(View view) {
-//        Intent intent = new Intent(this, RegisterActivity.class);
-//        startActivity(intent);
-//    }
+    public void setPasswordLayoutError(String s) {
+        passwordLayout.setError(s);
+    }
 }
