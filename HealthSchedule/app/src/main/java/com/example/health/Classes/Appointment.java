@@ -48,7 +48,7 @@ public class Appointment implements Comparable<Appointment> {
         if (year - 1900 < date.getYear()) return true;
         if (year - 1900 > date.getYear()) return false;
         if (month - 1 < date.getMonth()) return true;
-        if (month - 1 > date.getMonth()) return true;
+        if (month - 1 > date.getMonth()) return false;
         if (day < date.getDate()) return true;
         if (day > date.getDate()) return false;
         return time < date.getHours();
