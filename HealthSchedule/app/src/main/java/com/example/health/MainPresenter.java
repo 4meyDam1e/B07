@@ -17,10 +17,11 @@ public class MainPresenter {
     private MainActivity view;
     private MainModel model;
 
-    public MainPresenter(MainActivity view) {
-        this.view = view;
-        model = new MainModel(this);
-    }
+    public MainPresenter() { }
+
+    public void setView(MainActivity view) { this.view = view; }
+
+    public void setModel(MainModel model) { this.model = model; }
 
     public void checkLoginRecord() {
         SharedPreferences settings = view.getSharedPreferences("setting", 0);

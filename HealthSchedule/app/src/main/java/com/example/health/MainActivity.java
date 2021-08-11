@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
         emailEdit = findViewById(R.id.m_editTextEmail);
         passwordEdit = findViewById(R.id.m_editTextPassword);
-        presenter = new MainPresenter(this);
+
+        presenter = new MainPresenter();
+        presenter.setView(this);
+
         emailLayout = findViewById(R.id.emailTextField);
         passwordLayout = findViewById(R.id.passwordTextField);
         dashboardIntent = new Intent(this, DashboardActivity.class);

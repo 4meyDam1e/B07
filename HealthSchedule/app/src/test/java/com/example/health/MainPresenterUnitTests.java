@@ -25,8 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainPresenterUnitTests {
     private MainActivity mockMainActivity = mock(MainActivity.class);
+    private MainModel mockMainModel = mock(MainModel.class);
 
-    private MainPresenter mainPresenter = new MainPresenter(mockMainActivity);
+    private MainPresenter mainPresenter = new MainPresenter();
     private MainPresenter spyMainPresenter = spy(mainPresenter);
 
     private SharedPreferences mockSharedPreferences = mock(SharedPreferences.class);
@@ -35,6 +36,11 @@ public class MainPresenterUnitTests {
 
     @Before
     public void setUpCommon() {
+        mainPresenter.setView(mockMainActivity);
+        spyMainPresenter.setView(mockMainActivity);
+        mainPresenter.setModel(mockMainModel);
+        spyMainPresenter.setModel(mockMainModel);
+
         when(mockMainActivity.getIntent()).thenReturn(mockIntent);
         when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
     }
@@ -53,6 +59,7 @@ public class MainPresenterUnitTests {
     public void testCheckLoginRecordBlankEmail() {
         when(mockSharedPreferences.getString("email", "")).thenReturn("");
 
+        //mainPresenter.checkLoginRecord();
         spyMainPresenter.checkLoginRecord();
         verify(spyMainPresenter, never()).successfullyLogin("");
     }
@@ -65,6 +72,7 @@ public class MainPresenterUnitTests {
         SharedPreferences.Editor mockPutString = mock(SharedPreferences.Editor.class);
         setUpSharedPreferences(mockEditor, mockPutString, "nonBlankEmail");
 
+        //mainPresenter.checkLoginRecord();
         spyMainPresenter.checkLoginRecord();
         verify(spyMainPresenter, times(1)).successfullyLogin("nonBlankEmail");
     }
@@ -87,6 +95,7 @@ public class MainPresenterUnitTests {
         SharedPreferences.Editor mockPutString = mock(SharedPreferences.Editor.class);
         setUpSharedPreferences(mockEditor, mockPutString, "mock@email.com");
 
+        //mainPresenter.successfullyLogin("mock@email.com");
         spyMainPresenter.successfullyLogin("mock@email.com");
 
         verify(spyMainPresenter, times(1)).setLoginRecord("mock@email.com");
@@ -130,17 +139,15 @@ public class MainPresenterUnitTests {
         verify(mockMainActivity, times(1)).setPasswordLayoutError("Please Enter a Valid Password!");
     }
 
-//    @Test
-//    public void testAttemptLoginCorrectFormat() {
-//        //Force out mockMainActivity to spit out the following.
-//        when(mockMainActivity.getEmail()).thenReturn("mock@goodEmail.com"); //Doesn't have @ and .
-//        when(mockMainActivity.getPassword()).thenReturn("mockGoodPassword");
-//
-//        MainModel mockMainModel = mock(MainModel.class);
-//
-//        mainPresenter.attemptLogin();
-//        verify(mockMainModel, times(1)).checkEmailPassword("mock@goodEmail.com", "mockGoodPassword");
-//    }
+    @Test
+    public void testAttemptLoginCorrectFormat() {
+        //Force out mockMainActivity to spit out the following.
+        when(mockMainActivity.getEmail()).thenReturn("mock@goodEmail.com"); //Doesn't have @ and .
+        when(mockMainActivity.getPassword()).thenReturn("mockGoodPassword");
+
+        mainPresenter.attemptLogin();
+        verify(mockMainModel, times(1)).checkEmailPassword("mock@goodEmail.com", "mockGoodPassword");
+    }
 
     //-------------------------------------------------------openRegisterPage() Tests------------------------------------------------------------
     @Test
