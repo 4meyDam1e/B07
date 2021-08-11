@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private MainPresenter presenter;
     private TextInputLayout emailLayout;
     private TextInputLayout passwordLayout;
+    private Intent dashboardIntent;
 
 
     @Override
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         presenter = new MainPresenter(this);
         emailLayout = findViewById(R.id.emailTextField);
         passwordLayout = findViewById(R.id.passwordTextField);
+        dashboardIntent = new Intent(this, DashboardActivity.class);
 
         presenter.checkLoginRecord();
     }
@@ -55,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
         presenter.attemptLogin();
     }
 
-    public void handleSignup(View view){
-        presenter.openRegisterPage();
-    }
+    public void handleSignup(View view){ presenter.openRegisterPage(); }
 
     public void setEmailLayoutError(String s) {
         emailLayout.setError(s);
@@ -66,4 +66,6 @@ public class MainActivity extends AppCompatActivity {
     public void setPasswordLayoutError(String s) {
         passwordLayout.setError(s);
     }
+
+    public Intent getIntent() { return dashboardIntent; }
 }

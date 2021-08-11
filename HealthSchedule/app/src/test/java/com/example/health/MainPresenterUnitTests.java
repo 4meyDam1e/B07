@@ -31,78 +31,69 @@ public class MainPresenterUnitTests {
 
     private SharedPreferences mockSharedPreferences = mock(SharedPreferences.class);
 
+    private Intent mockIntent = mock(Intent.class);
+
+    @Before
+    public void setUpCommon() {
+        when(mockMainActivity.getIntent()).thenReturn(mockIntent);
+        when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
+    }
+
+    /**Setting up mocks for the following lines in setLoginRecord():
+     * SharedPreferences settings = view.getSharedPreferences("setting", 0);
+     * settings.edit().putString("email", email).commit();
+     **/
+    private void setUpSharedPreferences(SharedPreferences.Editor mockEditor, SharedPreferences.Editor mockPutString, String email) {
+        when(mockSharedPreferences.edit()).thenReturn(mockEditor);
+        when(mockEditor.putString("email", email)).thenReturn(mockPutString);
+    }
+
     //-----------------------------------------------------checkLoginRecord() Tests----------------------------------------------------------------
     @Test
     public void testCheckLoginRecordBlankEmail() {
-        when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
         when(mockSharedPreferences.getString("email", "")).thenReturn("");
 
-        mainPresenter.checkLoginRecord();
+        spyMainPresenter.checkLoginRecord();
         verify(spyMainPresenter, never()).successfullyLogin("");
     }
 
     @Test
     public void testCheckLoginRecordNonBlankEmail() {
-        when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
         when(mockSharedPreferences.getString("email", "")).thenReturn("nonBlankEmail");
 
-        mainPresenter.checkLoginRecord();
+        SharedPreferences.Editor mockEditor = mock(SharedPreferences.Editor.class);
+        SharedPreferences.Editor mockPutString = mock(SharedPreferences.Editor.class);
+        setUpSharedPreferences(mockEditor, mockPutString, "nonBlankEmail");
+
+        spyMainPresenter.checkLoginRecord();
         verify(spyMainPresenter, times(1)).successfullyLogin("nonBlankEmail");
     }
 
     //-------------------------------------------------------setLoginRecord() Tests----------------------------------------------------------------
     @Test
     public void testSetLoginRecord() {
-        //Setting up mocks for lines: SharedPreferences settings = view.getSharedPreferences("setting", 0);
-        //                            settings.edit().putString("email", email).commit();
-        // in setLoginRecord()
-        when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
-
         SharedPreferences.Editor mockEditor = mock(SharedPreferences.Editor.class);
-        when(mockSharedPreferences.edit()).thenReturn(mockEditor);
-
         SharedPreferences.Editor mockPutString = mock(SharedPreferences.Editor.class);
-        when(mockEditor.putString("email", "mock@email.com")).thenReturn(mockPutString);
+        setUpSharedPreferences(mockEditor, mockPutString, "mock@email.com");
 
         mainPresenter.setLoginRecord("mock@email.com");
         verify(mockPutString, times(1)).commit();
     }
 
     //------------------------------------------------------successfullyLogin() Tests---------------------------------------------------------------
-//    @Test
-//    public void testSuccessfullyLogin() {
-//        //Setting up mocks for lines: SharedPreferences settings = view.getSharedPreferences("setting", 0);
-//        //                            settings.edit().putString("email", email).commit();
-//        // in setLoginRecord()
-//        when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
-//
-//        SharedPreferences.Editor mockEditor = mock(SharedPreferences.Editor.class);
-//        when(mockSharedPreferences.edit()).thenReturn(mockEditor);
-//
-//        SharedPreferences.Editor mockPutString = mock(SharedPreferences.Editor.class);
-//        when(mockEditor.putString("email", "mock@email.com")).thenReturn(mockPutString);
-//
-//        //ArgumentCaptor<Intent> intentCaptor = ArgumentCaptor.forClass(Intent.class);
-//
-//        mainPresenter.successfullyLogin("mock@email.com");
-//
-//        verify(spyMainPresenter, times(1)).setLoginRecord("mock@email.com");
-//
-//        Intent intent = new Intent(mockMainActivity, DashboardActivity.class);
-//        doNothing().when(intent.putExtra("email", "mock@email.com"));
-//
-//        verify(intent).putExtra("email", "mock@email.com");
-//        verify(mockMainActivity, times(1)).startActivity(intent);
-////        //Checking lines: Intent intent = new Intent(this.view, DashboardActivity.class);
-////        //                intent.putExtra("email", email);
-////        //                this.view.startActivity(intent);
-////        verify(mockMainActivity, times(1)).startActivity(intentCaptor.capture());
-////        Intent testIntent = intentCaptor.getValue();
-////        assertTrue(testIntent.hasExtra("email"));
-////        assertEquals("mock@email.com", testIntent.getStringExtra("email"));
-//
-//        verify(mockMainActivity, times(1)).finish();
-//    }
+    @Test
+    public void testSuccessfullyLogin() {
+        SharedPreferences.Editor mockEditor = mock(SharedPreferences.Editor.class);
+        SharedPreferences.Editor mockPutString = mock(SharedPreferences.Editor.class);
+        setUpSharedPreferences(mockEditor, mockPutString, "mock@email.com");
+
+        spyMainPresenter.successfullyLogin("mock@email.com");
+
+        verify(spyMainPresenter, times(1)).setLoginRecord("mock@email.com");
+        verify(mockIntent).putExtra("email", "mock@email.com");
+        verify(mockMainActivity).startActivity(mockIntent);
+        verify(mockMainActivity).finish();
+    }
 
     //-------------------------------------------------------loginEmailError() Tests----------------------------------------------------------------
     @Test
@@ -154,9 +145,7 @@ public class MainPresenterUnitTests {
     //-------------------------------------------------------openRegisterPage() Tests------------------------------------------------------------
     @Test
     public void testOpenRegisterPage() {
-        Intent intent = new Intent(mockMainActivity, RegisterActivity.class);
-
         mainPresenter.openRegisterPage();
-        verify(mockMainActivity).startActivity(intent);
+        verify(mockMainActivity).startActivity(mockIntent);
     }
 }

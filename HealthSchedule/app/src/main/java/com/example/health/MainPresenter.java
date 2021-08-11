@@ -36,7 +36,7 @@ public class MainPresenter {
 
     public void successfullyLogin(String email) {
         setLoginRecord(email);
-        Intent intent = new Intent(this.view, DashboardActivity.class);
+        Intent intent = this.view.getIntent();
         intent.putExtra("email", email);
         this.view.startActivity(intent);
         this.view.finish();
@@ -67,8 +67,6 @@ public class MainPresenter {
     }
 
     public void openRegisterPage() {
-        Intent intent = new Intent(this.view, RegisterActivity.class);
-        this.view.startActivity(intent);
+        this.view.startActivity(this.view.getIntent());
     }
-
 }
