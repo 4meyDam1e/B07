@@ -1,6 +1,6 @@
 # B07 Project
 
-<center>Group One</center>
+Group One
 
 
 
