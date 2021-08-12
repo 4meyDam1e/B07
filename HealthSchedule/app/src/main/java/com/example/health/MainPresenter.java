@@ -17,7 +17,10 @@ public class MainPresenter {
     private MainActivity view;
     private MainModel model;
 
-    public MainPresenter() { }
+    public MainPresenter() {
+        this.model = new MainModel();
+        this.model.setPresenter(this);
+    }
 
     public void setView(MainActivity view) { this.view = view; }
 

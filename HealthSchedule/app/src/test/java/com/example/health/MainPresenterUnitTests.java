@@ -41,7 +41,6 @@ public class MainPresenterUnitTests {
         mainPresenter.setModel(mockMainModel);
         spyMainPresenter.setModel(mockMainModel);
 
-        when(mockMainActivity.getIntent()).thenReturn(mockIntent);
         when(mockMainActivity.getSharedPreferences("setting", 0)).thenReturn(mockSharedPreferences);
     }
 
@@ -99,9 +98,7 @@ public class MainPresenterUnitTests {
         spyMainPresenter.successfullyLogin("mock@email.com");
 
         verify(spyMainPresenter, times(1)).setLoginRecord("mock@email.com");
-        verify(mockIntent).putExtra("email", "mock@email.com");
-        verify(mockMainActivity).startActivity(mockIntent);
-        verify(mockMainActivity).finish();
+        verify(mockMainActivity).Login("mock@email.com");
     }
 
     //-------------------------------------------------------loginEmailError() Tests----------------------------------------------------------------
@@ -148,13 +145,4 @@ public class MainPresenterUnitTests {
         mainPresenter.attemptLogin();
         verify(mockMainModel, times(1)).checkEmailPassword("mock@goodEmail.com", "mockGoodPassword");
     }
-
-    //-------------------------------------------------------openRegisterPage() Tests------------------------------------------------------------
-//    @Test
-//    public void testOpenRegisterPage() {
-//        Intent intent = new Intent(mockMainActivity, RegisterActivity.class);
-//
-//        mainPresenter.openRegisterPage();
-//        verify(mockMainActivity).startActivity(intent);
-//    }
 }
