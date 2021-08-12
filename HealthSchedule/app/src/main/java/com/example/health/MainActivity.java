@@ -24,10 +24,14 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
     private EditText emailEdit;
     private EditText passwordEdit;
+
     private MainPresenter presenter;
+    private MainModel model;
+
     private TextInputLayout emailLayout;
     private TextInputLayout passwordLayout;
-
+    private Intent dashboardIntent;
+    private Intent registerIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
         emailEdit = findViewById(R.id.m_editTextEmail);
         passwordEdit = findViewById(R.id.m_editTextPassword);
-        presenter = new MainPresenter(this);
+
+        //presenter = new MainPresenter();
+        model = new MainModel();
+        presenter = model.presenter;
+        presenter.setView(this);
+
         emailLayout = findViewById(R.id.emailTextField);
         passwordLayout = findViewById(R.id.passwordTextField);
+        dashboardIntent = new Intent(this, DashboardActivity.class);
+        registerIntent = new Intent(this, RegisterActivity.class);
 
         presenter.checkLoginRecord();
     }

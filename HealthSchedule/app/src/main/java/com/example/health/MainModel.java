@@ -13,8 +13,9 @@ import com.google.firebase.database.ValueEventListener;
 public class MainModel {
     MainPresenter presenter;
 
-    public MainModel(MainPresenter presenter) {
-        this.presenter = presenter;
+    public MainModel() {
+        this.presenter = new MainPresenter();
+        this.presenter.setModel(this);
     }
 
     void checkEmailPassword(String email, String password) {
