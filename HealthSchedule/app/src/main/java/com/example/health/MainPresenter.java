@@ -36,10 +36,7 @@ public class MainPresenter {
 
     public void successfullyLogin(String email) {
         setLoginRecord(email);
-        Intent intent = new Intent(this.view, DashboardActivity.class);
-        intent.putExtra("email", email);
-        this.view.startActivity(intent);
-        this.view.finish();
+        view.Login(email);
     }
 
     public void loginEmailError() {
@@ -66,9 +63,6 @@ public class MainPresenter {
         model.checkEmailPassword(email, password);
     }
 
-    public void openRegisterPage() {
-        Intent intent = new Intent(this.view, RegisterActivity.class);
-        this.view.startActivity(intent);
-    }
+
 
 }
