@@ -66,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
         presenter.attemptLogin();
     }
 
-    public void handleSignup(View view){ presenter.openRegisterPage(); }
+    public void handleSignup(View view){
+        openRegisterPage();
+    }
 
     public void setEmailLayoutError(String s) {
         emailLayout.setError(s);
@@ -76,7 +78,15 @@ public class MainActivity extends AppCompatActivity {
         passwordLayout.setError(s);
     }
 
-    public Intent getMainToDashboardIntent() { return dashboardIntent; }
+    public void Login(String email) {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.putExtra("email", email);
+        this.startActivity(intent);
+        this.finish();
+    }
 
-    public Intent getMainToRegisterIntent() { return registerIntent; }
+    public void openRegisterPage() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        this.startActivity(intent);
+    }
 }
