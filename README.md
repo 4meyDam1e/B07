@@ -2,6 +2,24 @@
 
 Group One
 
+**Some example account for testing:**
+
+*The following user information is purely fictitious and any similarity is purely coincidental.*
+
+Doctors:
+
+| Email              | Password |
+| ------------------ | -------- |
+| dio.brando@qq.com  | 12345678 |
+| sora@qq.com        | 123456   |
+| zemin.jiang@qq.com | 123456   |
+
+Patients:
+
+| Email        | Password |
+| ------------ | -------- |
+| trump@qq.com | 123456   |
+
 
 
 ## General Informations
