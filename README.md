@@ -2,6 +2,8 @@
 
 Group One
 
+**Note: The APP will automatically remember your login information after logging in. You need to log out on the profile page to log in to other accounts.**
+
 **Some example account for testing:**
 
 *The following user information is purely fictitious and any similarity is purely coincidental.*
